@@ -1,0 +1,24 @@
+h2 User profile
+.row
+  .col-md-4
+    .user-profile-avatar
+      img src='@user.avatar' alt='User profile picture'
+    .user-availability
+      ul.list-unstyled
+      -@user.availabilities.each do |availability|
+          li = availability.week_day
+          li = availability.start_time
+          li = availability.end_time
+  .col-md-8
+    .user-information
+      ul
+        li 
+          label = "Name: #{@user.name}"
+        li
+          label = "Email: #{@user.email}"
+        li
+          label = "Location #{@user.location}"
+        li
+          label = "Gender #{@user.gender}"
+
+    = link_to 'Edit User', edit_user_path(@user)

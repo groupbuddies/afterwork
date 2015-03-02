@@ -1,0 +1,9 @@
+.row
+  .col-md-6.col-md-offset-3
+    h2 = @event.name
+    p This event starts on #{@event.start_date.year}/#{@event.start_date.month}/#{@event.start_date.day} at #{@event.start_date.hour}:#{@event.start_date.min}
+    p And has a ending dat on #{@event.end_date.year}/#{@event.end_date.month}/#{@event.end_date.day} at #{@event.end_date.hour}:#{@event.end_date.min}
+    p.fa.fa-4x.fa-user = "#{@event.attendees.size}"
+    = link_to 'Attend', new_user_attendee(@event), class: 'btn btn-info'
+    = link_to 'Delete Event', event_path, method: :delete, data:{confirm: "Are you sure?"}, class: 'btn btn-danger'
+

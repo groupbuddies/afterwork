@@ -1,0 +1,17 @@
+h1 Users
+
+table.table
+  tr
+    th Name
+    th Email
+    th Location
+    th Gender
+    th &nbsp
+  -@users.each do |user|
+    tr
+      td =link_to user.name, user_path(user)
+      td =user.email
+      td =user.location
+      td =user.gender
+      td =link_to 'delete', user_path(user), method: :delete
+

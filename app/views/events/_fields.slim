@@ -1,0 +1,17 @@
+-f.object.errors.full_messages.each do |error|
+  .alert.alert-danger
+    = error
+
+.form-group
+  = f.input :name, autofocus: true, input_html: { class: 'form-control' }
+.form-group
+  = f.input :location, input_html: { class: 'form-control' }
+.form-group
+  = f.input :start_date, input_html: { class: 'form-control' }
+.form-group
+  = f.input :end_date, input_html: { class: 'form-control' }
+.form-group
+  = f.input :description, input_html: { class: 'form-control' }
+.form-group
+  = f.input :hashtag, input_html: { class: 'form-control' }
+
