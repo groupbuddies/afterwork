@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  load_and_authorize_resource
   
   def index
     @events = Event.all
@@ -44,8 +43,19 @@ class EventsController < ApplicationController
     redirect_to root_path
   end
 
+  def attend
+    @event = Event.find(params[:id])
+
+    if Attendee.find_by(user_id: current_user.id, event_id: @event.id).nil?
+      Attendee.create(user_id: current_user.id, event_id: @event.id)
+      render 'show'
+    else
+      render 'show'
+    end
+  end
+
+  
   def event_params
     params.require(:event).permit(:name, :location, :start_date, :end_date, :description, :hashtag)
   end
-
 end

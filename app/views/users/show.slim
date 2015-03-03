@@ -1,8 +1,12 @@
 h2 User profile
 .row
-  .col-md-4
+  .col-md-6.col-md-offset-3
     .user-profile-avatar
-      img src='@user.avatar' alt='User profile picture'
+      ul.list-unstyled
+        li
+          img src=="#{@user.image}" alt='User profile picture'
+        li 
+          label ="Name: #{@user.name}"
     .user-availability
       ul.list-unstyled
       -@user.availabilities.each do |availability|
@@ -12,13 +16,5 @@ h2 User profile
   .col-md-8
     .user-information
       ul
-        li 
-          label = "Name: #{@user.name}"
-        li
-          label = "Email: #{@user.email}"
-        li
-          label = "Location #{@user.location}"
-        li
-          label = "Gender #{@user.gender}"
 
     = link_to 'Edit User', edit_user_path(@user)
