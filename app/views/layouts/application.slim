@@ -12,10 +12,15 @@ html
     .navbar.navbar-inverse.navbarfixed-top role='navigation'
       .container
         .navbar-header
-          .navbar-brand
-            h1 = link_to 'AFTERWORK', root_path
-          ul.navbar-nav.navbar-right
-            li =link_to 'Users', users_path
+          h1 = link_to 'AFTERWORK', root_path
+        ul.nav.navbar-nav.list-unstyled
+          - if current_user
+            li =link_to 'Sign out', destroy_user_session_path, method: :delete
+            li =link_to 'Profile', user_path(current_user)
+          -else
+            li =link_to 'Sign in', new_user_session_path
+            li =link_to 'Sign up', new_user_registration_path
+          li =link_to 'Events', events_path
 
     .row 
       .container

@@ -6,6 +6,8 @@ h2 Events
       span.input-group-btn
         buttun.btn.btn-default(type='button')
           .fa.fa-search
+    = link_to 'New Event', new_event_path, class: 'btn btn-primary'
+
   -@events.each do |event|
     .row.col-md-4.featured-events
       .panel.panel-primary
@@ -16,6 +18,4 @@ h2 Events
             li = "Start date: #{event.start_date}"
             li = "Start date: #{event.end_date}"
             li.fa.fa-user = "#{event.attendees.size}"
-.row
-  .col-md-12
-    = link_to 'New Event', new_event_path
+
