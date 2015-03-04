@@ -7,11 +7,15 @@
 .form-group
   = f.input :location, input_html: { class: 'form-control' }
 .form-group
-  = f.input :start_date, input_html: { class: 'form-control' }
+  = f.input :start_date, input_html: { class: 'date-element' }
 .form-group
-  = f.input :end_date, input_html: { class: 'form-control' }
+  = f.input :end_date, input_html: { class: 'date-element' }
 .form-group
   = f.input :description, input_html: { class: 'form-control' }
 .form-group
   = f.input :hashtag, input_html: { class: 'form-control' }
+.form-group
+  = f.input :interest_list, input_html: { class: 'form-control' }
+
+= link_to 'Back', events_path
 

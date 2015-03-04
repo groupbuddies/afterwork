@@ -5,8 +5,8 @@
 .form-group
   = f.input :name, autofocus: true, input_html: {class: 'form-control'}
 .form-group
-  = f.input :email, input_html: {class: 'form-control'}
-.form-group
   = f.input :location, input_html: {class: 'form-control'}
 .form-group
   = f.input :gender, collection: [:female, :male]
+.form-group
+  = f.input :interest_list, input_html: { class: 'form-control' }

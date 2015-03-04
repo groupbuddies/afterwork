@@ -32,11 +32,11 @@ RSpec.configure do |config|
 end
 
 def select_driver
-  if example.metadata[:js]
-    if example.metadata[:js] == :selenium
-      :selenium
-    else
-      :webkit
-    end
+  return unless example.metadata[:js]
+
+  if example.metadata[:js] == :selenium
+    :selenium
+  else
+    :webkit
   end
 end

@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  
   def index
     @events = Event.all
   end
@@ -8,7 +7,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
-  def new 
+  def new
     @event = Event.new
   end
 
@@ -48,26 +47,22 @@ class EventsController < ApplicationController
 
     if Attendee.attending?(current_user.id, @event.id)
       Attendee.create(user_id: current_user.id, event_id: @event.id)
-      flash[:notice] = "You are attending to #{@event.name}"
-      render 'show'
-    else
-      render 'show'
     end
+    redirect_to 'show'
   end
 
   def cancel_attend
     @event = Event.find(params[:id])
 
-    if !Attendee.attending?(current_user.id, @event.id)
+    unless Attendee.attending?(current_user.id, @event.id)
       Attendee.find_by(user_id: current_user.id, event_id: @event.id).delete
-      flash[:notice] = "You are not going to #{@event.name}"
-      render 'show'
-    else
-      render 'show'
     end
+    redirect_to 'show'
   end
 
+  private
+
   def event_params
-    params.require(:event).permit(:name, :location, :start_date, :end_date, :description, :hashtag)
+    params.require(:event).permit(:name, :location, :start_date, :end_date, :description, :hashtag, :interest_list).merge(owner: current_user.id)
   end
 end

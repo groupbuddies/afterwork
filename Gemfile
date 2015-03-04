@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.5'
 
+gem 'acts-as-taggable-on', '~> 3.4'
 gem 'bourbon'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'cancancan', '~>1.10'

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @users = User.all
   end
@@ -9,11 +8,11 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new    
+    @user = User.new
   end
 
   def edit
-    @user = User.find(params[:id])    
+    @user = User.find(params[:id])
   end
 
   def create
@@ -28,7 +27,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    
+
     if @user.update(users_params)
       redirect_to root_path, notice: 'Account updated with success.'
     else
@@ -44,6 +43,6 @@ class UsersController < ApplicationController
   end
 
   def users_params
-    params.require(:user).permit(:name, :location, :gender)
+    params.require(:user).permit(:name, :location, :gender, :interest_list)
   end
 end

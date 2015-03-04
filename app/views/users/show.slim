@@ -1,20 +1,25 @@
-h2 User profile
 .row
+  h2 User profile
   .col-md-6.col-md-offset-3
     .user-profile-avatar
       ul.list-unstyled
         li
           img src=="#{@user.image}" alt='User profile picture'
         li 
-          label ="Name: #{@user.name}"
+          h3 =@user.name
     .user-availability
-      ul.list-unstyled
-      -@user.availabilities.each do |availability|
-          li = availability.week_day
-          li = availability.start_time
-          li = availability.end_time
-  .col-md-8
-    .user-information
+      h3 User availability
       ul
+        -@user.availabilities.each do |availability|
+          li = "#{availability.week_day}'s from #{availability.hours} up to #{availability.hours}"
+    .user-interests
+      h3 Interests
+      ul.list-unstyled
+      -@user.interest_list.each do |interest|
+        li = interest
+.row
+  .col-md-6.col-md-offset-2
+    .user-option-buttons
+      = link_to 'Edit User', edit_user_path(@user), class: 'btn btn-primary'
+      = link_to 'Add availability', new_user_availability_path(@user), class: 'btn btn-primary'
 
-    = link_to 'Edit User', edit_user_path(@user)

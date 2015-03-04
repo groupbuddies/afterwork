@@ -8,7 +8,7 @@ table.table
     th &nbsp
   - @availabilities.each do |availability|
     tr
-      td =Date::DAYNAMES[availability.week_day]
+      td =availability.week_day
       td ="#{availability.start_time.hour}:#{availability.start_time.min} "
       td ="#{availability.end_time.hour}:#{availability.end_time.min} "
       td = link_to 'delete', user_availability_path(current_user, availability), method: :delete, class: 'btn btn-danger'

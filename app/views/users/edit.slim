@@ -4,9 +4,6 @@
   =simple_form_for(@user, html: {class: 'form-horizontal'}) do |form|
     = render 'fields', f: form
     .form-group
-      .availabilities
-        = form.simple_fields_for :availabilities do |availability|
-          = render 'availability_fields', from: availability
-        .links
-          = form.button :submit, class: 'btn btn-primary'
+      .links
+        = form.button :submit, class: 'btn btn-primary'
 

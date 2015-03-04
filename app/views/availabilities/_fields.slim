@@ -3,7 +3,7 @@
     = error
 
 .form-group
-  = f.input :week_day, autofocus: true, input_html: { class: 'form-control' }
+  = f.input :week_day, autofocus: true, collection: Availability::WEEK_DAY, input_html: { class: 'form-control' }
 .form-group
   = f.input :start_time, input_html: { class: 'form-control' }
 .form-group

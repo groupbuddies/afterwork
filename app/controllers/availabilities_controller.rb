@@ -1,5 +1,4 @@
 class AvailabilitiesController < ApplicationController
-  
   def index
     @availabilities = User.find(current_user.id).availabilities
   end
