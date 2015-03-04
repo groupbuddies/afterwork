@@ -1,0 +1,10 @@
+-f.object.errors.full_messages.each do |error|
+  .alert.alert-danger
+    = error
+
+.form-group
+  = f.input :week_day, autofocus: true, input_html: { class: 'form-control' }
+.form-group
+  = f.input :start_time, input_html: { class: 'form-control' }
+.form-group
+  = f.input :end_time, input_html: { class: 'form-control' }

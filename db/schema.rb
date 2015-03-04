@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150303164450) do
+ActiveRecord::Schema.define(version: 20150304100417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20150303164450) do
   end
 
   create_table "availabilities", force: :cascade do |t|
-    t.string  "week_day",   null: false
     t.time    "start_time", null: false
     t.time    "end_time",   null: false
     t.integer "user_id",    null: false
+    t.integer "week_day"
   end
 
   create_table "events", force: :cascade do |t|

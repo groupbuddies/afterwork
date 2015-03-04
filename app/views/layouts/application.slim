@@ -17,6 +17,7 @@ html
           - if current_user
             li =link_to 'Sign out', destroy_user_session_path, method: :delete
             li =link_to 'Profile', user_path(current_user)
+            li =link_to 'Availabilities', user_availabilities_path(current_user)
           -else
             li =link_to 'Sign in', new_user_session_path
             li =link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter)

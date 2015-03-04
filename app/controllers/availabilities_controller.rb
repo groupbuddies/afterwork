@@ -1,6 +1,7 @@
 class AvailabilitiesController < ApplicationController
+  
   def index
-    @availabilities = Availability.all
+    @availabilities = User.find(current_user.id).availabilities
   end
 
   def new
@@ -11,7 +12,7 @@ class AvailabilitiesController < ApplicationController
     @availability = Availability.new(availabilities_params)
 
     if @availability.save
-      redirect_to root_path, notice: 'Added availability with success.'
+      redirect_to user_availabilities_path(current_user), notice: 'Added availability with success.'
     else
       render 'new'
     end
@@ -21,10 +22,12 @@ class AvailabilitiesController < ApplicationController
     @availability = Availability.find(params[:id])
     @availability.destroy
 
-    redirect_to 'index'
+    redirect_to user_availabilities_path
   end
 
+  private
+
   def availabilities_params
-    params.require(:availability).permit(:week_day, :start_time, :end_time)
+    params.require(:availability).permit(:week_day, :start_time, :end_time).merge(user_id: current_user.id)
   end
 end

@@ -46,15 +46,27 @@ class EventsController < ApplicationController
   def attend
     @event = Event.find(params[:id])
 
-    if Attendee.find_by(user_id: current_user.id, event_id: @event.id).nil?
+    if Attendee.attending?(current_user.id, @event.id)
       Attendee.create(user_id: current_user.id, event_id: @event.id)
+      flash[:notice] = "You are attending to #{@event.name}"
       render 'show'
     else
       render 'show'
     end
   end
 
-  
+  def cancel_attend
+    @event = Event.find(params[:id])
+
+    if !Attendee.attending?(current_user.id, @event.id)
+      Attendee.find_by(user_id: current_user.id, event_id: @event.id).delete
+      flash[:notice] = "You are not going to #{@event.name}"
+      render 'show'
+    else
+      render 'show'
+    end
+  end
+
   def event_params
     params.require(:event).permit(:name, :location, :start_date, :end_date, :description, :hashtag)
   end

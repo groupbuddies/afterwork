@@ -4,11 +4,16 @@ Rails.application.routes.draw do
   
   root to: 'events#index'
 
-  resources :users
+  resources :users do
+    resources :availabilities
+  end
+
+  resources :availabilities
 
   resources :events do
     member do
       post :attend
+      delete :cancel_attend
     end
   end
 
