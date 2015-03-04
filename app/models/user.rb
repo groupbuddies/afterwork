@@ -22,4 +22,12 @@ class User < ActiveRecord::Base
   def email_required?
     super && provider.blank?
   end
+
+  def self.user_name(user_id)
+    User.find(user_id).name
+  end
+
+  def self.image_profile(user_id)
+    User.find(user_id).image
+  end
 end

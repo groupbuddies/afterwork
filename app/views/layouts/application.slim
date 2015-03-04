@@ -15,7 +15,8 @@ html
           h1 = link_to 'AFTERWORK', root_path
         ul.nav.navbar-nav.list-unstyled.nav-list
           - if current_user
-            li =link_to 'Profile', user_path(current_user)
+            li =image_tag User.image_profile(current_user)
+            li =link_to "#{User.user_name(current_user)}", user_path(current_user)
             li =link_to 'Sign out', destroy_user_session_path, method: :delete
             
           -else

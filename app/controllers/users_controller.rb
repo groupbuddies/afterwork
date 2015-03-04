@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+  authorize_resource
   def index
     @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
+    authorize! :manage, @user
   end
 
   def new
@@ -19,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to root_path, notice: 'Account created with success.'
+      redirect_to user_path(@user), notice: 'Account created with success.'
     else
       render 'new'
     end
@@ -29,7 +31,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update(users_params)
-      redirect_to root_path, notice: 'Account updated with success.'
+      redirect_to user_path(@user), notice: 'Account updated with success.'
     else
       render 'edit'
     end

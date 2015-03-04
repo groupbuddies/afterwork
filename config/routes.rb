@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :availabilities
   end
 
-  resources :availabilities
+  resources :availabilities, only: ['new', 'create', 'index', 'destroy']
 
   resources :events do
     member do
@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :attendees
+  # resources :attendees
 
 end

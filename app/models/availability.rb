@@ -1,7 +1,7 @@
 class Availability < ActiveRecord::Base
   belongs_to :user
 
-  WEEK_DAY = %w(Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday)
+  WEEK_DAY = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday)
 
   validates :week_day, presence: true
   validates :start_time, presence: true

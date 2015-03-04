@@ -9,17 +9,19 @@
           h3 =@user.name
     .user-availability
       h3 User availability
-      ul
+      table.table
         -@user.availabilities.each do |availability|
-          li = "#{availability.week_day}'s from #{availability.hours} up to #{availability.hours}"
+          tr
+            td = "#{availability.week_day}'s from #{availability.hours} up to #{availability.hours}"
+            td = link_to 'delete', user_availability_path(@user, availability), data: { confirm: 'Are you sure?'}, method: :delete,  class: 'btn btn-danger'
     .user-interests
       h3 Interests
       ul.list-unstyled
       -@user.interest_list.each do |interest|
-        li = interest
+        p = interest
 .row
-  .col-md-6.col-md-offset-2
-    .user-option-buttons
+  .user-option-buttons
+    .text-center
       = link_to 'Edit User', edit_user_path(@user), class: 'btn btn-primary'
       = link_to 'Add availability', new_user_availability_path(@user), class: 'btn btn-primary'
 

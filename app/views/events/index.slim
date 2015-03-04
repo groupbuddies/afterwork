@@ -17,5 +17,6 @@ h2 Events
             li = event.ending_date
             li.fa.fa-user = "#{event.attendees.size}"
 .row
-  -if !current_user.nil?
-    = link_to 'New Event', new_event_path, class: 'btn btn-primary'
+  .text-center
+    -if !current_user.nil?
+      = link_to 'New Event', new_event_path, class: 'btn btn-primary'

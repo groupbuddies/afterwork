@@ -1,4 +1,5 @@
 class AvailabilitiesController < ApplicationController
+  authorize_resource
   def index
     @availabilities = User.find(current_user.id).availabilities
   end
@@ -11,7 +12,7 @@ class AvailabilitiesController < ApplicationController
     @availability = Availability.new(availabilities_params)
 
     if @availability.save
-      redirect_to user_availabilities_path(current_user), notice: 'Added availability with success.'
+      redirect_to user_path(current_user), notice: 'Added availability with success.'
     else
       render 'new'
     end
@@ -21,7 +22,7 @@ class AvailabilitiesController < ApplicationController
     @availability = Availability.find(params[:id])
     @availability.destroy
 
-    redirect_to user_availabilities_path
+    redirect_to user_path(current_user.id)
   end
 
   private

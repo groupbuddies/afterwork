@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  authorize_resource
   def index
     @events = Event.all
   end
@@ -13,6 +14,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    authorize! :manage, @event
   end
 
   def create
@@ -48,7 +50,7 @@ class EventsController < ApplicationController
     if Attendee.attending?(current_user.id, @event.id)
       Attendee.create(user_id: current_user.id, event_id: @event.id)
     end
-    redirect_to 'show'
+    redirect_to event_path(@event)
   end
 
   def cancel_attend
@@ -57,7 +59,7 @@ class EventsController < ApplicationController
     unless Attendee.attending?(current_user.id, @event.id)
       Attendee.find_by(user_id: current_user.id, event_id: @event.id).delete
     end
-    redirect_to 'show'
+    redirect_to event_path(@event)
   end
 
   private

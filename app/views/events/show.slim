@@ -1,14 +1,12 @@
 .row
   .col-md-6.col-md-offset-3
     h2 = @event.name
-    h3 Begin 
-    p #{@event.starting_date}
-    h3 End
-    p #{@event.ending_date}
-    h3 Location
-    p #{@event.location}
+    h3 Starts #{@event.starting_date}
+    h3 Ends #{@event.ending_date}
+    h3 In #{@event.location}
     h3 Description
     p #{@event.description}
+    h3 #{@event.hashtag}
     h3 Interests
     ul.list-unstyled
       -@event.interest_list.each do |interest|
@@ -16,8 +14,15 @@
     h3 Attendding to this event
     p.fa.fa-3x.fa-user = "#{@event.attendees.size}"
     h3 Location: #{@event.location}
-    - if @event.attending?(current_user.id)
-      = link_to 'Attend', attend_event_path(@event), method: :post, class: 'btn btn-success'
-    - else
-      = link_to 'Cancel', cancel_attend_event_path(@event), method: :delete, class: 'btn btn-danger'
+    -if current_user.nil?
+      p Wanna attend to this event?
+      .text-center
+        = link_to 'Sign in with your twitter account', user_omniauth_authorize_path(:twitter), class: 'btn btn-primary'
+
+    -else
+      .text-center
+        - if @event.attending?(current_user.id)
+          = link_to 'Attend', attend_event_path(@event), method: :post, class: 'btn btn-success'
+        - else
+          = link_to 'Cancel', cancel_attend_event_path(@event), method: :delete, class: 'btn btn-danger'
 
