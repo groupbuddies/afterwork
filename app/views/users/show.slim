@@ -12,7 +12,7 @@
       table.table
         -@user.availabilities.each do |availability|
           tr
-            td = "#{availability.week_day}'s from #{availability.hours} up to #{availability.hours}"
+            td = "#{availability.week_day}'s from #{availability.start_hours} up to #{availability.end_hours}"
             td = link_to 'delete', user_availability_path(@user, availability), data: { confirm: 'Are you sure?'}, method: :delete,  class: 'btn btn-danger'
     .user-interests
       h3 Interests

@@ -20,4 +20,5 @@ class Event < ActiveRecord::Base
     event_ending_date = end_date
     "#{event_ending_date.strftime('%d/%m/%Y')} at #{event_ending_date.strftime('%H:%M')}"
   end
+
 end

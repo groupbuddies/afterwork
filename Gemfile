@@ -24,6 +24,7 @@ gem 'recipient_interceptor'
 gem 'sass-rails'
 gem 'slim-rails'
 gem 'simple_form'
+gem 'twitter'
 gem 'title'
 gem 'uglifier'
 
@@ -47,6 +48,7 @@ group :test do
   gem 'timecop'
   gem 'webmock'
   gem 'rubocop', require: false
+  gem 'faker'
 end
 
 group :production, :staging do

@@ -1,3 +1,5 @@
+relative_require 'status_update'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -30,4 +32,5 @@ class User < ActiveRecord::Base
   def self.image_profile(user_id)
     User.find(user_id).image
   end
+
 end

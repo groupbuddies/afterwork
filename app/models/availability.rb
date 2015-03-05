@@ -8,7 +8,15 @@ class Availability < ActiveRecord::Base
   validates :end_time, presence: true
   validates :user_id, presence: true
 
-  def hours
+  def star_hours
     "#{start_time.hour}:#{start_time.min}"
+  end
+
+  def end_hours
+    "#{end_time.hour}:#{end_time.min}"
+  end
+
+  def event_available(start_date, end_date)
+    start_time < start_date && end_time > end_date
   end
 end
