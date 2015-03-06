@@ -9,4 +9,4 @@
 .form-group
   = f.input :gender, collection: [:female, :male]
 .form-group
-  = f.input :interest_list, input_html: { class: 'form-control' }
+  = f.input :interest_list, input_html: { value: @user.interest_list.join(','), class: 'form-control' }

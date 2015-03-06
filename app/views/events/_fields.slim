@@ -15,7 +15,7 @@
 .form-group
   = f.input :hashtag, input_html: { class: 'form-control' }
 .form-group
-  = f.input :interest_list, input_html: { class: 'form-control' }
+  = f.input :interest_list, input_html: { value: @event.interest_list.join(',') , class: 'form-control' }
 
 = link_to 'Back', events_path, class: 'btn btn-primary'
 

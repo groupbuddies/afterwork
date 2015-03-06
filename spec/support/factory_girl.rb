@@ -10,4 +10,10 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
   end
+
+  # factory :availability do
+  #   week_day rand(0..6)
+  #   start_time { Faker::Time.between(Time.now, 2.days.from_now, :evening }
+  #   end_time start_time+rand(600..1200)
+  # end
 end

@@ -3,8 +3,8 @@ body, a,
   margin: 0
   color: #000
 
-.homepage-search
-  margin: 20px 0
+h1
+  font-style: none
 
 .featured-events
   content-box: padding-box
@@ -17,7 +17,9 @@ body, a,
   min-height: 80px
   a
     color: white
-    font-style: none
+    &:hover
+    text-decoration: none
+      
     
 .users-list:last-child
   list-style: none
@@ -29,4 +31,24 @@ body, a,
 .user-option-buttons
   margin-top: 30px
 
+.buttons-config
+  margin: 10px
 
+.panel-event-title
+  a
+    color: white
+    font-size: 18px
+    text-decoration: none
+
+.event_start_date, .event_end_date, .availability_start_time, .availability_end_time
+  display: flex
+
+.control-label
+  flex: 1 0 auto
+  padding-right: 5px
+
+.date-element
+  padding: 0 5px 0 5px
+
+.availability>time
+  padding: 20px

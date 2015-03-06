@@ -1,19 +1,17 @@
 .row
   .col-md-6.col-md-offset-3
-    h2 = @event.name
-    h3 Starts #{@event.starting_date}
-    h3 Ends #{@event.ending_date}
-    h3 In #{@event.location}
-    h3 Description
+    h2.text-center = @event.name
+    p Starts #{@event.starting_date}
+    p Ends #{@event.ending_date}
+    h3.text-center In #{@event.location} | #{@event.hashtag} 
+    b Description
     p #{@event.description}
-    h3 #{@event.hashtag}
     h3 Interests
-    ul.list-unstyled
+    p
       -@event.interest_list.each do |interest|
-        p = interest
-    h3 Attendding to this event
-    p.fa.fa-3x.fa-user = "#{@event.attendees.size}"
-    h3 Location: #{@event.location}
+        ="#{interest} |"
+    .text-center
+      p.fa.fa-3x.fa-user = "#{@event.attendees.size}"
     -if current_user.nil?
       p Wanna attend to this event?
       .text-center
@@ -22,7 +20,11 @@
     -else
       .text-center
         - if @event.attending?(current_user.id)
-          = link_to 'Attend', attend_event_path(@event), method: :post, class: 'btn btn-success'
+          = link_to 'Attend', attend_event_path(@event), method: :post, class: 'btn btn-success buttons-config'
+
         - else
-          = link_to 'Cancel', cancel_attend_event_path(@event), method: :delete, class: 'btn btn-danger'
+          = link_to 'Cancel', cancel_attend_event_path(@event), method: :delete, class: 'btn btn-danger buttons-config'
+        - if @event.owner == current_user.id
+          = link_to 'Edit Event', edit_event_path(@event), class: 'btn btn-primary buttons-config'
+          = link_to 'Delete Event', event_path(@event), method: :delete, class: 'btn btn-danger buttons-config'
 

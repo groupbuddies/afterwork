@@ -1,5 +1,3 @@
-relative_require 'status_update'
-
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -18,6 +16,7 @@ class User < ActiveRecord::Base
       user.name = auth.info.name
       user.password = Devise.friendly_token[0, 20]
       user.image = auth.info.image
+      user.screen_name = auth.info.nickname
     end
   end
 
@@ -33,4 +32,11 @@ class User < ActiveRecord::Base
     User.find(user_id).image
   end
 
+  def self.users_available(start_date)
+    User.all.select do |user|
+      user.availabilities.any? do |availability|
+        availability.include?(start_date)
+      end
+    end
+  end
 end
