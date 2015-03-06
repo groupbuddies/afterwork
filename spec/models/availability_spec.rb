@@ -50,7 +50,6 @@ describe Availability do
 
   context '#events_of_the_day' do
     it 'returns events of the day' do
-      
     end
   end
 end

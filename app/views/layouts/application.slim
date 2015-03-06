@@ -24,6 +24,12 @@ html
 
     .row 
       .container
-        = render 'flashes'
+        .container
+        - if flash[:notice].present?
+          .alert.alert-info
+            = flash[:notice]
+        - if flash[:alert].present?
+          .alert.alert-danger
+            = flash[:alert]
         = yield
         = render 'javascript'
