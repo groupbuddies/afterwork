@@ -8,7 +8,7 @@ class Event < ActiveRecord::Base
 
   acts_as_taggable_on :interests
 
-  after_create :users_available
+  after_create :notify_users
 
   # scope :today, lambda { :conditions => ["start_date = ?", Date.today] }
 
@@ -25,12 +25,11 @@ class Event < ActiveRecord::Base
     "#{event_ending_date.strftime('%d/%m/%Y')} at #{event_ending_date.strftime('%H:%M')}"
   end
 
-  def users_available
-    available_users = User.users_available(start_date)
+  def notify_users
+    EventNotifications.perform_async(id)
+  end
 
-    available_users.each do |user|
-      TwitterIntegration.update_status(user.screen_name, name, hashtag)
-    end
-    available_users
+  def self.notify_users_available_todays
+    Event.find_by(start_date: DateTime.now).each(&:users_available)
   end
 end

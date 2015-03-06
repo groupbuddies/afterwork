@@ -24,9 +24,11 @@ gem 'recipient_interceptor'
 gem 'sass-rails'
 gem 'slim-rails'
 gem 'simple_form'
+gem 'sidekiq'
 gem 'twitter'
 gem 'title'
 gem 'uglifier'
+gem 'whenever', :require => false
 
 group :development do
   gem 'better_errors'
