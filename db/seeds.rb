@@ -73,4 +73,4 @@ availabilities = Availability.create([{ week_day: 1, start_time: Time.new(2015,0
                                       { week_day: 3, start_time: Time.new(2015,03,06,19,30), end_time: Time.new(2015,03,06,22,30), user_id: 2},
                                       { week_day: 4, start_time: Time.new(2015,03,06,19,30), end_time: Time.new(2015,03,06,22,30), user_id: 2},
                                       { week_day: 5, start_time: Time.new(2015,03,06,19,30), end_time: Time.new(2015,03,06,22,30), user_id: 2},
-                                      { week_day: 6, start_time: Time.new(2015,03,06,19,30), end_time: Time.new(2015,03,06,22,30), user_id: 2},])
+                                      { week_day: 6, start_time: Time.new(2015,03,06,19,30), end_time: Time.new(2015,03,06,22,30), user_id: 2}])

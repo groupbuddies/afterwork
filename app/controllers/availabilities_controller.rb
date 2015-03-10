@@ -9,7 +9,7 @@ class AvailabilitiesController < ApplicationController
   end
 
   def create
-    @availability = Availability.new(availabilities_params)
+    @availability = current_user.availabilities.build(availability_params)
 
     if @availability.save
       redirect_to user_path(current_user), notice: 'Added availability with success.'
@@ -27,7 +27,7 @@ class AvailabilitiesController < ApplicationController
 
   private
 
-  def availabilities_params
-    params.require(:availability).permit(:week_day, :start_time, :end_time).merge(user_id: current_user.id)
+  def availability_params
+    params.require(:availability).permit(:week_day, :start_time, :end_time)
   end
 end

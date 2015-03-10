@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  has_many :attendees, dependent: :destroy
+  has_many :attendances, dependent: :destroy
 
   validates :name, presence: true
   validates :location, presence: true
@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   scope :future, -> { where('start_date >= ?', Time.now).order('start_date ASC') }
 
   def attending?(user_id)
-    Attendee.find_by(user_id: user_id, event_id: id).nil? != false
+    Attendance.find_by(user_id: user_id, event_id: id).present?
   end
 
   def starting_date
@@ -23,7 +23,17 @@ class Event < ActiveRecord::Base
     EventNotifications.perform_async(id)
   end
 
-  def self.notify_users_available_todays
-    Event.find_by(start_date: DateTime.now).each(&:users_available)
+  def attend(user_id)
+    Attendance.create(event_id: id, user_id: user_id) unless existing?(user_id)
+  end
+
+  def cancel(user_id)
+    Attendance.where(user_id: user_id, event_id: id).first.destroy
+  end
+
+  private
+
+  def existing?(user_id)
+    Attendance.where(user_id: user_id, event_id: id).any?
   end
 end

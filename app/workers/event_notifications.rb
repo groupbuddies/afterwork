@@ -4,9 +4,10 @@ class EventNotifications
   def perform(event_id)
     event = Event.find(event_id)
 
-    available_users = User.users_available(event.start_date)
+    availabilities = Availability.available_at(event.start_date)
 
-    available_users.each do |user|
+    availabilities.each do |availability|
+      user = User.find(availability.user_id)
       TwitterIntegration.update_status(user.screen_name, event.name, event.hashtag)
     end
   end

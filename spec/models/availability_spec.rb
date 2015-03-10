@@ -5,10 +5,12 @@ describe Availability do
     context 'An event is in the range' do
       it 'is available' do
         user = create :user
-        availability = Availability.create(week_day: DateTime.new(2015, 03, 06, 20, 00).wday, start_time: DateTime.new(2015, 03, 06, 20, 00), end_time: DateTime.new(2015, 03, 06, 23, 30), user_id: user.id)
-        date = DateTime.new(2015, 03, 06, 21, 00)
+        date_time_now = DateTime.now
+        one_hour_later = date_time_now + 1.hour
+        three_hours_later = date_time_now + 3.hour
+        availability = Availability.create(week_day: date_time_now.wday, start_time: date_time_now, end_time: three_hours_later, user_id: user.id)
 
-        result = availability.include?(date)
+        result = availability.include?(one_hour_later)
 
         expect(result).to be(true)
       end
@@ -16,10 +18,12 @@ describe Availability do
     context 'An event is in the range' do
       it 'is not available' do
         user = create :user
-        availability = Availability.create(week_day: DateTime.new(2015, 03, 06, 20, 00).wday, start_time: DateTime.new(2015, 03, 06, 20, 00), end_time: DateTime.new(2015, 03, 06, 23, 30), user_id: user.id)
-        date = DateTime.new(2015, 03, 06, 18, 00)
+        date_time_now = DateTime.now
+        one_hour_earlier = date_time_now - 1.hour
+        three_hours_later = date_time_now + 3.hour
+        availability = Availability.create(week_day: date_time_now.wday, start_time: date_time_now, end_time: three_hours_later, user_id: user.id)
 
-        result = availability.include?(date)
+        result = availability.include?(one_hour_earlier)
 
         expect(result).to be(false)
       end
@@ -27,8 +31,12 @@ describe Availability do
     context 'An event starts in the range and ends out of the range' do
       it 'is available' do
         user = create :user
-        availability = Availability.create(week_day: DateTime.new(2015, 03, 06, 20, 00).wday, start_time: DateTime.new(2015, 03, 06, 20, 00), end_time: DateTime.new(2015, 03, 06, 23, 30), user_id: user.id)
-        event = Event.new(name: 'random event', location: 'Braga', start_date: DateTime.new(2015, 03, 06, 23, 00), end_date: DateTime.new(2015, 03, 06, 23, 31), owner: user.id)
+        date_time_now = DateTime.now
+        one_hour_later = date_time_now + 1.hour
+        three_hours_later = date_time_now + 3.hour
+        four_hours_later = date_time_now + 4.hour
+        availability = Availability.create(week_day: date_time_now.wday, start_time: date_time_now, end_time: three_hours_later, user_id: user.id)
+        event = Event.new(name: 'random event', location: 'Braga', start_date: one_hour_later, end_date: four_hours_later, owner_id: user.id)
 
         result = availability.include?(event.start_date)
 
@@ -38,9 +46,12 @@ describe Availability do
     context 'An event starts before the range and ends in the range' do
       it 'is not available' do
         user = create :user
-        availability = Availability.create(week_day: DateTime.new(2015, 03, 06, 20, 00).wday, start_time: DateTime.new(2015, 03, 06, 20, 00), end_time: DateTime.new(2015, 03, 06, 23, 30), user_id: user.id)
-        event = Event.new(name: 'random event', location: 'Braga', start_date: DateTime.new(2015, 03, 06, 19, 00), end_date: DateTime.new(2015, 03, 06, 21, 00), owner: user.id)
-
+        date_time_now = DateTime.now
+        one_hour_earlier = date_time_now - 1.hour
+        two_hours_later = date_time_now + 2.hour
+        three_hours_later = date_time_now + 3.hour
+        availability = Availability.create(week_day: date_time_now.wday, start_time: date_time_now, end_time: three_hours_later, user_id: user.id)
+        event = Event.new(name: 'random event', location: 'Braga', start_date: one_hour_earlier, end_date: two_hours_later, owner_id: user.id)
         result = availability.include?(event.start_date)
 
         expect(result).to be(false)

@@ -14,10 +14,16 @@ class Availability < ActiveRecord::Base
     "#{end_time.hour}:#{end_time.min}"
   end
 
+  def self.available_at(start_date)
+    Availability.all.select do |availability|
+      availability.include?(start_date)
+    end
+  end
+
   def include?(start_event_date)
     start_event_date.wday == week_day &&
-      time_in_minutes(start_event_date) > time_in_minutes(start_time) &&
-      time_in_minutes(start_event_date) < time_in_minutes(end_time)
+      time_in_minutes(start_event_date) >= time_in_minutes(start_time) &&
+      time_in_minutes(start_event_date) <= time_in_minutes(end_time)
   end
 
   private

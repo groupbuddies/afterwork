@@ -1,4 +1,4 @@
-class Attendee < ActiveRecord::Base
+class Attendance < ActiveRecord::Base
   belongs_to :events
   belongs_to :users
 
@@ -6,6 +6,6 @@ class Attendee < ActiveRecord::Base
   validates :user_id, presence: true
 
   def self.attending?(user_id, event_id)
-    Attendee.find_by(user_id: user_id, event_id: event_id).nil? != false
+    Attendance.where(user_id: user_id, event_id: event_id).any?
   end
 end

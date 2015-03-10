@@ -28,8 +28,6 @@ gem 'slim-rails'
 gem 'title'
 gem 'twitter'
 gem 'uglifier'
-gem 'whenever', :require => false
-gem 'bower'
 
 group :development do
   gem 'better_errors'

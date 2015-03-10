@@ -50,7 +50,6 @@
         = link_to 'Cancel', cancel_attend_event_path(@event), method: :delete, class: 'Button Button--super'
     -else
       = link_to 'Sign in with your twitter account', user_omniauth_authorize_path(:twitter)
-
     - if can? :manage, @event
       = link_to 'Edit Event', edit_event_path(@event), class: 'Button'
       = link_to 'Delete Event', event_path(@event), method: :delete, class: 'Button'

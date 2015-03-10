@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   authorize_resource
+
   def index
     @events_per_month = Event.future.group_by { |event| event.start_date.month }
 
@@ -24,6 +25,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.owner_id = current_user.id
 
     if @event.save
       redirect_to event_path(@event), notice: 'Event Created Sucessfully'
@@ -52,17 +54,16 @@ class EventsController < ApplicationController
   def attend
     @event = Event.find(params[:id])
 
-    if Attendee.attending?(current_user.id, @event.id)
-      Attendee.create(user_id: current_user.id, event_id: @event.id)
-    end
+    @event.attend(current_user.id)  unless @event.attending?(current_user.id)
+
     redirect_to event_path(@event)
   end
 
-  def cancel_attend
+  def cancel
     @event = Event.find(params[:id])
 
-    unless Attendee.attending?(current_user.id, @event.id)
-      Attendee.find_by(user_id: current_user.id, event_id: @event.id).delete
+    if @event.attending?(current_user.id)
+      @event.cancel(current_user.id)
     end
     redirect_to event_path(@event)
   end
@@ -70,6 +71,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:name, :location, :start_date, :end_date, :description, :hashtag, :interest_list).merge(owner: current_user.id)
+    params.require(:event).permit(:name, :location, :start_date, :end_date, :description, :hashtag, :interest_list)
   end
 end

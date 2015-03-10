@@ -13,10 +13,7 @@ Rails.application.routes.draw do
   resources :events do
     member do
       post :attend
-      delete :cancel_attend
+      delete :cancel
     end
   end
-
-  # resources :attendees
-
 end

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150315142247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attendees", force: :cascade do |t|
+  create_table "attendances", force: :cascade do |t|
     t.integer "user_id",  null: false
     t.integer "event_id", null: false
   end
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150315142247) do
     t.string   "location",               null: false
     t.datetime "start_date",             null: false
     t.string   "hashtag",     limit: 60
-    t.integer  "owner",                  null: false
+    t.integer  "owner_id",               null: false
   end
 
   create_table "taggings", force: :cascade do |t|
