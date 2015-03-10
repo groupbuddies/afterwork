@@ -1,19 +1,11 @@
 h2 Events
-.row
-  .col-md-6.col-md-offset-3
-  -@events.each do |event|
-    .row.col-md-4.featured-events
-      .panel.panel-primary
-        .panel.panel-heading.panel-event-title
-          = link_to event.name, event_path(event.id)
-        .panel.panel-body
-          ul.list-unstyled
-            li 
-              b = "On #{Date::DAYNAMES[event.start_date.wday]}"
-            li = event.starting_date
-            li = event.ending_date
-            li.fa.fa-user = "#{event.attendees.size}"
-.row
-  .text-center
-    -if !current_user.nil?
-      = link_to 'New Event', new_event_path, class: 'btn btn-primary'
+-@events.each do |event|
+  = link_to event.name, event_path(event.id)
+  ul
+    li 
+      b = "On #{Date::DAYNAMES[event.start_date.wday]}"
+    li = event.starting_date
+    li = event.ending_date
+      li.fa.fa-user = "#{event.attendees.size}"
+-if !current_user.nil?
+  = link_to 'New Event', new_event_path

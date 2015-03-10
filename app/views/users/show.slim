@@ -1,25 +1,20 @@
-.row
-  h2 User profile
-  .col-md-6.col-md-offset-3
-    .user-profile-avatar
-      img src=="#{@user.image}" alt='User profile picture'
-      h3 =@user.name
-      p ="Twitter: #{@user.screen_name}"
-    .user-availability
-      b Available on
-      table.table
-        -@user.availabilities.each do |availability|
-          tr
-            td = "#{Date::DAYNAMES[availability.week_day]}'s from #{availability.start_hours} up to #{availability.end_hours}"
-            td = link_to 'delete', user_availability_path(@user, availability), method: :delete,  class: 'btn btn-danger'
-    .user-interests
-      h3 Interests
-      p
-        -@user.interest_list.each do |interest|
-          = "#{interest} |"
-.row
-  .user-option-buttons
-    .text-center
-      = link_to 'Edit User', edit_user_path(@user), class: 'btn btn-primary buttons-config'
-      = link_to 'Add availability', new_user_availability_path(@user), class: 'btn btn-primary buttons-config'
+h2 User profile
 
+img src=="#{@user.image}" alt='User profile picture'
+h3 =@user.name
+p ="Twitter: #{@user.screen_name}"
+
+b Available on
+table
+  -@user.availabilities.each do |availability|
+    tr
+      td = "#{Date::DAYNAMES[availability.week_day]}'s from #{availability.start_hours} up to #{availability.end_hours}"
+      td = link_to 'delete', user_availability_path(@user, availability), method: :delete
+
+h3 Interests
+p
+  -@user.interest_list.each do |interest|
+    = "#{interest} |"
+
+= link_to 'Edit User', edit_user_path(@user)
+= link_to 'Add availability', new_user_availability_path(@user)

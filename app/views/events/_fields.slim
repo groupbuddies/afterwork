@@ -1,21 +1,9 @@
--f.object.errors.full_messages.each do |error|
-  .alert.alert-danger
-    = error
-
-.form-group
-  = f.input :name, autofocus: true, input_html: { class: 'form-control' }
-.form-group
-  = f.input :location, input_html: { class: 'form-control' }
-.form-group
-  = f.input :start_date, input_html: { class: 'date-element' }
-.form-group
-  = f.input :end_date, input_html: { class: 'date-element' }
-.form-group
-  = f.input :description, input_html: { class: 'form-control' }
-.form-group
-  = f.input :hashtag, input_html: { class: 'form-control' }
-.form-group
-  = f.input :interest_list, input_html: { value: @event.interest_list.join(',') , class: 'form-control' }
-
-= link_to 'Back', events_path, class: 'btn btn-primary'
-
+= form_for @event do |f|
+  = f.text_field :name
+  = f.text_field :location
+  = f.datetime_select :start_date
+  = f.datetime_select :end_date
+  = f.text_field :description
+  = f.text_field :hashtag
+  = f.text_field :interest_list, value: @event.interest_list.join(',')
+  = f.submit
