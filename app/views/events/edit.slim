@@ -1,5 +1,5 @@
 h2 Edit event
-
-= render 'fields'
+= form_for @event do |f|
+  = render partial: 'fields', locals: {f: f}
 
 = link_to 'Back', events_path

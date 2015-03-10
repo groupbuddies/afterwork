@@ -1,10 +1,4 @@
--f.object.errors.full_messages.each do |error|
-  .alert.alert-danger
-    = error
-
-.form-group
-  = f.input :week_day, autofocus: true, collection: 0..6, :label_method => lambda { |day| t(:"date.day_names")[day] }, input_html: { class: 'form-control' }
-.form-group
-  = f.input :start_time, input_html: { class: 'form-control' }
-.form-group
-  = f.input :end_time, input_html: { class: 'form-control' }
+= f.select :week_day, options_for_select([['Sunday', 0], ['Monday', 1], ['Tuesday', 2], ['Wednesday', 3], ['Thursday', 4], ['Friday', 5], ['Saturday', 6]])
+= f.datetime_select :start_time
+= f.datetime_select :end_time
+= f.submit

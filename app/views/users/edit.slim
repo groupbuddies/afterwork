@@ -1,5 +1,6 @@
 h2 Edit Profile
 
-= render 'fields'
+= form_for @user do |f|
+  = render partial: 'fields', locals: {f: f}
 
 = link_to 'Profile', user_path(@user)
