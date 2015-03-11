@@ -1,0 +1,13 @@
+{
+  "name": "afterwork",
+  "version": "0.0.0",
+  "homepage": "https://github.com/groupbuddies/afterwork",
+  "authors": [
+    "Mário abreu <mjm.abreu@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "normalize.css": "~3.0.2"
+  }
+}

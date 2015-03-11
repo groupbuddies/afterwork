@@ -1,0 +1,68 @@
+$Theme-fontSize-base: 18px;
+$Theme-fontSize-large: 1.22rem;
+
+$Theme-spacing-base: 18px;
+$Theme-spacing-small: 9px;
+
+$Theme-fontSizes: (
+  base: ( font-size: $Theme-fontSize-base, line-height: 1.618 ),
+  large: ( font-size: $Theme-fontSize-large, line-height: 1.5 )
+);
+
+@function Theme-fontSize($size, $property: 'font-size'){
+  @return map-get(map-get($Theme-fontSizes, $size), $property);
+}
+
+$Theme-blue: #2E86AB;
+$Theme-gray: #E2E1E2;
+$Theme-greenSuccess: #566612;
+$Theme-lightGreenSuccess: #E6F0C0;
+$Theme-lightRedError: #FCE3E4;
+$Theme-redDanger: #BF283A;
+$Theme-redError: #981215;
+$Theme-white: #FFFFFF;
+
+$Theme-color: (
+  background: (
+    body: $Theme-white,
+    error: $Theme-lightRedError,
+    footer: $Theme-white,
+    header: $Theme-white,
+    success: $Theme-lightGreenSuccess
+  ),
+  text: (
+    body: $Theme-blue,
+    error: $Theme-redError,
+    footer: $Theme-blue,
+    header: $Theme-blue,
+    success: $Theme-greenSuccess
+  ),
+  button:(
+    default: $Theme-gray,
+    destroy: $Theme-redDanger
+  )
+);
+
+@function Theme-color($color, $property){
+  @return map-get(map-get($Theme-color, $color), $property);
+}
+
+*,
+*::after,
+*::before{
+  box-sizing: border-box;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+
+html{
+  font-family: sans-serif;
+  font-size: Theme-fontSize(base);
+  height: 100%;
+  line-height: Theme-fontSize(base, line-height);
+  text-rendering: optimizeLegibility;
+}

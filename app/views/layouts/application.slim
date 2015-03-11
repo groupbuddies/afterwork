@@ -1,29 +1,41 @@
 doctype html
-html
+html lang="en"
   head
     meta charset="utf-8"
     meta name="ROBOTS" content="NOODP"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    meta http-equiv="x-ua-compatible" content="ie=edge"
     title Afterwork
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-
-body
-  h1 = link_to 'AFTERWORK', root_path
-  ul
-    - if current_user
-      li =image_tag User.image_profile(current_user)
-      li =link_to "#{User.user_name(current_user)}", user_path(current_user)
-      li =link_to 'Sign out', destroy_user_session_path, method: :delete
-      
-    -else
-      li =link_to 'Sign in with Twitter', user_omniauth_authorize_path(:twitter)
-
-  - if flash[:notice].present?
-    .alert.alert-info
-      = flash[:notice]
-  - if flash[:alert].present?
-    .alert.alert-danger
-      = flash[:alert]
-  = yield
-  = render 'javascript'
+  body.MainLayout
+    .MainLayout-header
+      header.Header role="banner"
+        .Header-logo
+          .Logo
+            = link_to "Afterwork", root_path, class: 'Logo-link'
+        .Header-nav
+          nav.Navbar role="navigation"
+            ul
+              li.Navbar-item = link_to "Events", events_path, class: 'Navbar-link'
+              - if current_user
+                li.Navbar-item = link_to "#{User.user_name(current_user)}", user_path(current_user), class: 'Navbar-link'
+                li.Navbar-item = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'Navbar-link'
+              -else
+                li.Navbar-item = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: 'Navbar-link'
+              li.Navbar-item = link_to "About", root_path, class: 'Navbar-link'
+    section.MainLayout-notification
+      - if flash[:notice].present?
+        .Notification.Notification--success
+          .Notification-message
+            = flash[:notice]
+      - if flash[:alert].present?
+        .Notification.Notification--error
+          .Notification-message
+            = flash[:alert]
+    main.MainLayout-body role="main"
+      = yield
+      = render 'javascript'
+    footer.MainLayout-footer role="contentinfo"
+      = link_to "Group Buddies", "https:www.groupbuddies.com", class: 'Footer-link'

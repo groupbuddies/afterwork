@@ -1,0 +1,15 @@
+$Navbar-text-color: Theme-color(text, header)
+$Navbar-spacing-base: $Theme-spacing-base
+
+.Navbar
+
+.Navbar-item
+  display: inline-block
+  list-style: none
+  padding: 0 $Navbar-spacing-base
+
+.Navbar-link
+  color: $Navbar-text-color
+  text-decoration: none
+  &:hover
+    color: darken($Navbar-text-color, 10%)

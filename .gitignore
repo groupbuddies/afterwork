@@ -16,3 +16,4 @@
 /public/assets/source_maps
 /spec/tmp/*
 .ruby-gemset
+vendor/assets/bower_components
