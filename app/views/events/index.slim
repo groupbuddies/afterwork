@@ -1,11 +1,13 @@
-h2 Events
 -@events.each do |event|
-  = link_to event.name, event_path(event.id)
-  ul
-    li 
-      b = "On #{Date::DAYNAMES[event.start_date.wday]}"
-    li = event.starting_date
-    li = event.ending_date
-      li.fa.fa-user = "#{event.attendees.size}"
+  .Event
+    = link_to event.name, event_path(event.id), class: 'Event-title'
+    ul
+      li.Event-info
+        b = "On #{Date::DAYNAMES[event.start_date.wday]}"
+      li.Event-info = event.starting_date
+      li.Event-info = event.ending_date
+        li.fa.fa-user = "#{event.attendees.size}"
 -if !current_user.nil?
-  = link_to 'New Event', new_event_path
+  .Event-create
+    .Button
+      = link_to 'New Event', new_event_path, class: 'Button-default'

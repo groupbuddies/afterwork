@@ -1,5 +1,5 @@
 $Theme-fontSize-base: 18px;
-$Theme-fontSize-large: 1.22rem;
+$Theme-fontSize-large: 1.222rem;
 
 $Theme-spacing-base: 18px;
 $Theme-spacing-small: 9px;
@@ -14,7 +14,7 @@ $Theme-fontSizes: (
 }
 
 $Theme-blue: #2E86AB;
-$Theme-gray: #E2E1E2;
+$Theme-lightgray: #f2E1E2;
 $Theme-greenSuccess: #566612;
 $Theme-lightGreenSuccess: #E6F0C0;
 $Theme-lightRedError: #FCE3E4;
@@ -38,7 +38,7 @@ $Theme-color: (
     success: $Theme-greenSuccess
   ),
   button:(
-    default: $Theme-gray,
+    default: $Theme-lightgray,
     destroy: $Theme-redDanger
   )
 );
