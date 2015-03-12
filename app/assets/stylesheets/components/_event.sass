@@ -1,8 +1,8 @@
-$Event-color-background: #F7F7F7
+$Event-color-background: Theme-color(background, default)
 $Event-color-borderTop: #FF623F  // FIXME Put this color on background color MAP on theme.sass file.
 $Event-height: 150px
 $Event-spacing-base: $Theme-spacing-base
-$Event-text-title-color: Theme-color(text, body)
+$Event-text-title-color: Theme-color(text, default)
 $Event-width: 280px
 
 .Event
@@ -27,4 +27,4 @@ $Event-width: 280px
   text-decoration: none
 
 .Event-create
-  margin-top: 20px
+  margin-top: $Event-spacing-base

@@ -14,31 +14,28 @@ $Theme-fontSizes: (
 }
 
 $Theme-blue: #2E86AB;
-$Theme-lightgray: #f2E1E2;
 $Theme-greenSuccess: #566612;
 $Theme-lightGreenSuccess: #E6F0C0;
 $Theme-lightRedError: #FCE3E4;
 $Theme-redDanger: #BF283A;
 $Theme-redError: #981215;
 $Theme-white: #FFFFFF;
+$Theme-orange: #FF623F;
 
 $Theme-color: (
   background: (
-    body: $Theme-white,
+    default: $Theme-white,
     error: $Theme-lightRedError,
-    footer: $Theme-white,
-    header: $Theme-white,
     success: $Theme-lightGreenSuccess
   ),
   text: (
-    body: $Theme-blue,
+    default: $Theme-blue,
+    lighter: $Theme-white,
     error: $Theme-redError,
-    footer: $Theme-blue,
-    header: $Theme-blue,
     success: $Theme-greenSuccess
   ),
   button:(
-    default: $Theme-lightgray,
+    default: $Theme-orange,
     destroy: $Theme-redDanger
   )
 );
