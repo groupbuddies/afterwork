@@ -1,7 +1,6 @@
   = f.text_field :name
   = f.text_field :location
   = f.datetime_select :start_date
-  = f.datetime_select :end_date
   = f.text_field :description
   = f.text_field :hashtag
   = f.text_field :interest_list, value: @event.interest_list.join(',')

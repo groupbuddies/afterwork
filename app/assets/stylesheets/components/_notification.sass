@@ -1,5 +1,5 @@
-$Notification-background-error: Theme-color(background, error)
-$Notification-background-success: Theme-color(background, success)
+$Notification-backgroundColor-error: Theme-color(background, error)
+$Notification-backgroundColor-success: Theme-color(background, success)
 $Notification-spacing-base: $Theme-spacing-base
 $Notification-spacing-small:  $Theme-spacing-small
 $Notification-text-error: Theme-color(text, error)
@@ -9,11 +9,12 @@ $Notification-text-success: Theme-color(text, success)
 .Notification
   margin: $Notification-spacing-small auto
   padding: $Notification-spacing-base 0
+  text-align: center
 
 .Notification--success
-  background-color: $Notification-background-success
+  background-color: $Notification-backgroundColor-success
   color: $Notification-text-success
 
 .Notification--error
-  background-color: $Notification-background-error
+  background-color: $Notification-backgroundColor-error
   color:  $Notification-text-error

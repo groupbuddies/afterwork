@@ -4,7 +4,6 @@ class Event < ActiveRecord::Base
   validates :name, presence: true
   validates :location, presence: true
   validates :start_date, presence: true
-  validates :end_date, presence: true
 
   acts_as_taggable_on :interests
 
@@ -18,11 +17,6 @@ class Event < ActiveRecord::Base
 
   def starting_date
     "#{start_date.strftime('%d/%m/%Y')} at #{start_date.strftime('%H:%M')}"
-  end
-
-  def ending_date
-    event_ending_date = end_date
-    "#{event_ending_date.strftime('%d/%m/%Y')} at #{event_ending_date.strftime('%H:%M')}"
   end
 
   def notify_users

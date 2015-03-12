@@ -12,30 +12,34 @@ html lang="en"
   body.MainLayout
     .MainLayout-header
       header.Header role="banner"
-        .Header-logo
-          .Logo
-            = link_to "Afterwork", root_path, class: 'Logo-link'
-        .Header-nav
-          nav.Navbar role="navigation"
-            ul
-              li.Navbar-item = link_to "Events", events_path, class: 'Navbar-link'
-              - if current_user
-                li.Navbar-item = link_to "#{User.user_name(current_user)}", user_path(current_user), class: 'Navbar-link'
-                li.Navbar-item = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'Navbar-link'
-              -else
-                li.Navbar-item = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: 'Navbar-link'
-              li.Navbar-item = link_to "About", root_path, class: 'Navbar-link'
+        .Container
+          .Header-logo
+            .Logo
+              = link_to "Afterwork", root_path, class: 'Logo-link'
+          .Header-nav
+            nav role="navigation"
+              ul.Navbar
+                li.Navbar-item = link_to "Events", events_path, class: 'Navbar-link'
+                - if current_user
+                  li.Navbar-item = link_to "#{User.user_name(current_user)}", user_path(current_user), class: 'Navbar-link'
+                  li.Navbar-item = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'Navbar-link'
+                - else
+                  li.Navbar-item = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: 'Navbar-link'
+                li.Navbar-item = link_to "About", root_path, class: 'Navbar-link'
     section.MainLayout-notification
-      - if flash[:notice].present?
-        .Notification.Notification--success
-          .Notification-message
+      .Container
+        - if flash[:notice].present?
+          .Notification.Notification--success
             = flash[:notice]
-      - if flash[:alert].present?
-        .Notification.Notification--error
-          .Notification-message
+        - if flash[:alert].present?
+          .Notification.Notification--error
             = flash[:alert]
     main.MainLayout-body role="main"
-      = yield
-      = render 'javascript'
+      .Container
+        .Body
+          = yield
+          = render 'javascript'
     footer.MainLayout-footer role="contentinfo"
-      = link_to "Group Buddies", "https:www.groupbuddies.com", class: 'Footer-link'
+      .Footer
+        .Container
+          = link_to "Group Buddies", "https:www.groupbuddies.com", class: 'Footer-link'
