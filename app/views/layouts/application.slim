@@ -36,8 +36,9 @@ html lang="en"
             = flash[:alert]
     main.MainLayout-body role="main"
       .Container
-        = yield
-        = render 'javascript'
+        .Body
+          = yield
+          = render 'javascript'
     footer.MainLayout-footer role="contentinfo"
       .Footer
         .Container

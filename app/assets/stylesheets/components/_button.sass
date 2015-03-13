@@ -7,12 +7,11 @@ $Button-spacing: $Theme-spacing-base
   background-color: $Button-backgroundColor-default
   border-radius: 3px
   border: 1px solid darken($Button-backgroundColor-default, 10%)
-  line-height: $Button-height
-  text-align: center
+  color: $Button-color-text
   display: inline-block
-  padding: 0 $Theme-spacing-base
+  line-height: $Button-height
+  padding: 0 $Button-spacing
+  text-align: center
+  text-decoration: none
   &:hover
     background-color: darken($Button-backgroundColor-default, 10%)
-
-.Button--medium
-  color: $Button-color-text
