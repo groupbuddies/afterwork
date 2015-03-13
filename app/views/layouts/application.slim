@@ -17,8 +17,8 @@ html lang="en"
             .Logo
               = link_to "Afterwork", root_path, class: 'Logo-link'
           .Header-nav
-            nav.Navbar role="navigation"
-              ul
+            nav role="navigation"
+              ul.Navbar
                 li.Navbar-item = link_to "Events", events_path, class: 'Navbar-link'
                 - if current_user
                   li.Navbar-item = link_to "#{User.user_name(current_user)}", user_path(current_user), class: 'Navbar-link'

@@ -1,19 +1,18 @@
-$Button-default-backgroundColor: Theme-color(button, default)
-$Button-text-color: Theme-color(text, lighter)
+$Button-backgroundColor-default: Theme-color(button, default)
+$Button-color-text: Theme-color(text, title)
 $Button-height: 50px
 $Button-spacing: $Theme-spacing-base
 
 .Button
-  text-align: center
-
-.Button-default
-  background-color: $Button-default-backgroundColor
+  background-color: $Button-backgroundColor-default
   border-radius: 3px
-  border: 1px solid darken($Button-default-backgroundColor, 10%)
-  color: $Button-text-color
+  border: 1px solid darken($Button-backgroundColor-default, 10%)
   line-height: $Button-height
-  margin-top: $Button-spacing
-  padding: 10px 20px 10px 20px
-  text-decoration: none
+  text-align: center
+  display: inline-block
+  padding: 0 $Theme-spacing-base
   &:hover
-    background-color: darken($Button-default-backgroundColor, 10%)
+    background-color: darken($Button-backgroundColor-default, 10%)
+
+.Button--medium
+  color: $Button-color-text

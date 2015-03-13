@@ -1,13 +1,12 @@
--@events.each do |event|
-  .Event
-    = link_to event.name, event_path(event.id), class: 'Event-title'
-    ul
-      li.Event-info
-        b = "On #{Date::DAYNAMES[event.start_date.wday]}"
-      li.Event-info = event.starting_date
-      li.Event-info = event.ending_date
+ul
+  -@events.each do |event|
+    .Event
+      = link_to event.name, event_path(event.id), class: 'Event-title'
+      li
+        em = "On #{Date::DAYNAMES[event.start_date.wday]}"
+      li = event.starting_date
         li.fa.fa-user = "#{event.attendees.size}"
 -if !current_user.nil?
-  .Event-create
-    .Button
-      = link_to 'New Event', new_event_path, class: 'Button-default'
+.Event-create
+  .Button
+    = link_to 'New Event', new_event_path, class: 'Button--medium'

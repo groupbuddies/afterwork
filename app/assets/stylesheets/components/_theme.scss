@@ -15,27 +15,29 @@ $Theme-fontSizes: (
 
 $Theme-blue: #2E86AB;
 $Theme-greenSuccess: #566612;
+$Theme-orange: #FF623F;
+$Theme-white: #FFFFFF;
+$Theme-gray: gray;
 $Theme-lightGreenSuccess: #E6F0C0;
 $Theme-lightRedError: #FCE3E4;
 $Theme-redDanger: #BF283A;
 $Theme-redError: #981215;
-$Theme-white: #FFFFFF;
-$Theme-orange: #FF623F;
 
 $Theme-color: (
   background: (
     default: $Theme-white,
     error: $Theme-lightRedError,
-    success: $Theme-lightGreenSuccess
+    success: $Theme-lightGreenSuccess,
+    shadow: $Theme-gray
   ),
   text: (
     default: $Theme-blue,
-    lighter: $Theme-white,
+    title: $Theme-white,
     error: $Theme-redError,
     success: $Theme-greenSuccess
   ),
   button:(
-    default: $Theme-orange,
+    default: $Theme-blue,
     destroy: $Theme-redDanger
   )
 );
@@ -55,6 +57,9 @@ ul{
   padding: 0;
 }
 
+li{
+  list-style: none;
+}
 
 html{
   font-family: sans-serif;
