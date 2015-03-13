@@ -1,5 +1,19 @@
-= f.text_field :name
-= f.text_field :location
-= f.text_field :gender, collection: [:female, :male]
-= f.text_field :interest_list, value: @user.interest_list.join(',')
-= f.submit
+.Form
+  .Form-item
+    = f.label :name
+  .Form-item--input
+  = f.text_field :name
+  .Form-item
+  = f.label :location
+  .Form-item--input
+  = f.text_field :location
+  .Form-item
+  = f.label :gender
+  .Form-item--input
+  = f.text_field :gender, collection: [:female, :male]
+  .Form-item
+  = f.label :interest_list
+  .Form-item--input
+  = f.text_field :interest_list, value: @user.interest_list.join(',')
+  .Form-item
+  = f.submit

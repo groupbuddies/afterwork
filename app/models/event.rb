@@ -4,7 +4,6 @@ class Event < ActiveRecord::Base
   validates :name, presence: true
   validates :location, presence: true
   validates :start_date, presence: true
-  validates :end_date, presence: true
 
   acts_as_taggable_on :interests
 

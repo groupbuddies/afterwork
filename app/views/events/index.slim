@@ -2,10 +2,12 @@ h2 Events
 -@events.each do |event|
   = link_to event.name, event_path(event.id)
   ul
-    li 
+    li
       b = "On #{Date::DAYNAMES[event.start_date.wday]}"
     li = event.starting_date
-    li = event.ending_date
       li.fa.fa-user = "#{event.attendees.size}"
+    -unless current_user.nil?
+      - if event.attending?(current_user.id)
+        = link_to 'Attend', attend_event_path(event.id), method: :post
 -if !current_user.nil?
   = link_to 'New Event', new_event_path
