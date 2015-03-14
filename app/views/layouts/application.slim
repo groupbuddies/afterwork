@@ -23,7 +23,7 @@ html lang="en"
                 - if current_user
                   li.Navbar-item = link_to "#{User.user_name(current_user)}", user_path(current_user), class: 'Navbar-link'
                   li.Navbar-item = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'Navbar-link'
-                -else
+                - else
                   li.Navbar-item = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: 'Navbar-link'
                 li.Navbar-item = link_to "About", root_path, class: 'Navbar-link'
     section.MainLayout-notification
