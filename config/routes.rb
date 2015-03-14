@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => 'omniauth_callbacks'}
-  
-  root to: 'events#index'
+
+  root to: 'static_pages#index'
 
   resources :users do
     resources :availabilities

@@ -13,32 +13,63 @@ $Theme-fontSizes: (
   @return map-get(map-get($Theme-fontSizes, $size), $property);
 }
 
-$Theme-blue: #2E86AB;
-$Theme-greenSuccess: #566612;
-$Theme-orange: #FF623F;
+$Theme-blue: #2A99C8;
+$Theme-beige: #F1EAD9;
 $Theme-white: #FFF;
-$Theme-gray: #EEE;
+$Theme-black: #000;
+$Theme-red: #F56B75;
+$Theme-pink: #E78A91;
+$Theme-yellow: #F6C75C;
+$Theme-darkYellow: #E4B855;
+$Theme-lightGray: #D8D1C2;
+$Theme-gray: #B4B4B4;
+
 $Theme-lightGreenSuccess: #E6F0C0;
+$Theme-greenSuccess: #566612;
 $Theme-lightRedError: #FCE3E4;
 $Theme-redDanger: #BF283A;
 $Theme-redError: #981215;
 
 $Theme-color: (
   background: (
-    default: $Theme-white,
     error: $Theme-lightRedError,
-    success: $Theme-lightGreenSuccess,
-    shadow: $Theme-gray
-  ),
-  text: (
-    default: $Theme-blue,
-    title: $Theme-white,
-    error: $Theme-redError,
-    success: $Theme-greenSuccess
+    event-card: $Theme-beige,
+    menu-bar: $Theme-blue,
+    success: $Theme-lightGreenSuccess
   ),
   button:(
-    default: $Theme-blue,
-    destroy: $Theme-redDanger
+    create: $Theme-red,
+    delete: $Theme-red,
+    menu-active: $Theme-white,
+    primary: $Theme-yellow,
+    secondary: $Theme-darkYellow,
+    text: $Theme-white
+  ),
+  input: (
+    border: $Theme-beige,
+    dropdown-active: $Theme-lightGray,
+    dropdown-background: $Theme-white,
+    dropdown-icon: $Theme-white,
+    filled: $Theme-black,
+    placeholder: $Theme-gray
+  ),
+  line: (
+    separator-content: $Theme-blue,
+    separator-event-content: $Theme-white,
+    separator-menu-bar-content: $Theme-white
+  ),
+  text: (
+    error: $Theme-redError,
+    event-primary-info: $Theme-red,
+    event-secundary-info: $Theme-pink,
+    label: $Theme-pink,
+    main-info: $Theme-black,
+    menu-bar: $Theme-beige,
+    menu-button-active: $Theme-black,
+    success: $Theme-greenSuccess,
+    title-content-separator: $Theme-blue,
+    title-event: $Theme-black,
+    title-page: $Theme-red
   )
 );
 

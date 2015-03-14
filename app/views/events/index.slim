@@ -1,14 +1,16 @@
-ul.Grid
-  -@events.each do |event|
-    li.Grid-item
-      .Event
-        = link_to event_path(event.id), class: 'Event-title' do
-          .Event-title = event.name
-          .Event-info
-            em = "On #{Date::DAYNAMES[event.start_date.wday]}"
-          .Event-info = event.starting_date
-          .Event-info
-            span.fa.fa-user = "#{event.attendees.size}"
+-@events_per_month.each do |month|
+  ul.Grid
+    p = Date::MONTHNAMES[month[0]]
+    -month[1].each do |event|
+      li.Grid-item
+        .Event
+          = link_to event_path(event.id), class: 'Event-title' do
+            .Event-title = event.name
+            .Event-info
+              em = "On #{Date::DAYNAMES[event.start_date.wday]}"
+            .Event-info = event.starting_date
+            .Event-info
+              span.fa.fa-user = "#{event.attendees.size}"
 .Body-action
   -if current_user.present?
     = link_to 'New Event', new_event_path, class: 'Button'

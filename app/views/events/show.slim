@@ -16,7 +16,6 @@ p.fa.fa-3x.fa-user = "#{@event.attendees.size}"
 -else
   - if @event.attending?(current_user.id)
     = link_to 'Attend', attend_event_path(@event), method: :post
-
   - else
     = link_to 'Cancel', cancel_attend_event_path(@event), method: :delete
   - if @event.owner == current_user.id

@@ -1,23 +1,16 @@
-$Event-color-background: Theme-color(background, default)
-$Event-borderTop-color: #FF623F  // FIXME Put this color on background color MAP on theme.sass file.
-$Event-color-shadow: Theme-color(background, shadow)
-$Event-color-title: Theme-color(text, default)
+$Event-color-background: Theme-color(background, event-card)
+$Event-color-title: Theme-color(text, title-event)
 $Event-height: 150px
 $Event-spacing-base: $Theme-spacing-base
 $Event-width: 280px
 
 .Event
   background-color: $Event-color-background
-  border-radius: 3px
-  border-top: 5px solid $Event-borderTop-color
-  box-shadow: 0 2px 10px -3px $Event-color-shadow
   display: inline-block
   height: $Event-height
   padding: $Event-spacing-base
   text-align: center
   width: $Event-width
-  &:hover
-    background-color: lighten($Event-borderTop-color, 30%)
 
 .Event-title
   color: $Event-color-title
