@@ -1,7 +1,9 @@
 $Navbar-color-text: Theme-color(text, menu-bar)
 $Navbar-spacing-base: $Theme-spacing-base
+$Navbar-fontSize-nav: Theme-fontSize(text, large, font-size)
 
 .Navbar
+  font-size: $Navbar-fontSize-nav
 
 .Navbar-item
   display: inline-block
@@ -11,5 +13,3 @@ $Navbar-spacing-base: $Theme-spacing-base
 .Navbar-link
   color: $Navbar-color-text
   text-decoration: none
-  &:hover
-    color: darken($Navbar-color-text, 10%)

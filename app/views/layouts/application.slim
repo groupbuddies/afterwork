@@ -9,6 +9,8 @@ html lang="en"
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
+    script src='//use.typekit.net/crd4ehk.js'
+    script try{Typekit.load();}catch(e){}
   body.MainLayout
     .MainLayout-header
       header.Header role="banner"
@@ -19,13 +21,11 @@ html lang="en"
           .Header-nav
             nav role="navigation"
               ul.Navbar
-                li.Navbar-item = link_to "Events", events_path, class: 'Navbar-link'
                 - if current_user
                   li.Navbar-item = link_to "#{User.user_name(current_user)}", user_path(current_user), class: 'Navbar-link'
                   li.Navbar-item = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'Navbar-link'
                 - else
                   li.Navbar-item = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: 'Navbar-link'
-                li.Navbar-item = link_to "About", root_path, class: 'Navbar-link'
     section.MainLayout-notification
       .Container
         - if flash[:notice].present?
@@ -38,7 +38,3 @@ html lang="en"
       .Container
         = yield
         = render 'javascript'
-    footer.MainLayout-footer role="contentinfo"
-      .Footer
-        .Container
-          = link_to "Group Buddies", "https:www.groupbuddies.com", class: 'Footer-link'

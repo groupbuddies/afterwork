@@ -1,12 +1,19 @@
 $Header-color-background: Theme-color(background, menu-bar)
 $Header-height-header: 70px
 $Header-spacing-base: $Theme-spacing-base
-$Header-logo-width: 200px
+$Header-logo-width: 230px
 
 .Header
   background-color: $Header-color-background
-  height: $Header-height-header
-  text-align: center
+  font-size: 0
 
 .Header-logo
-  padding-top: $Header-spacing-base
+  display: inline-block
+  vertical-align: middle
+
+.Header-nav
+  display: inline-block
+  line-height: $Header-height-header
+  text-align: right
+  vertical-align: middle
+  width: calc(100% - #{$Header-logo-width})

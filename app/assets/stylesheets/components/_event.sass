@@ -1,17 +1,53 @@
 $Event-color-background: Theme-color(background, event-card)
+$Event-color-label: Theme-color(text, label)
+$Event-color-primaryInfo: Theme-color(text, event-primary-info)
+$Event-color-secondaryInfo: Theme-color(text, event-secondary-info)
 $Event-color-title: Theme-color(text, title-event)
-$Event-height: 150px
-$Event-spacing-base: $Theme-spacing-base
-$Event-width: 280px
+$Event-label-fontSize: Theme-fontSize(text, small, font-size)
+$Event-label-fontWeight: Theme-fontWeight(regular)
+$Event-label-lineHeight: Theme-fontSize(text, small, line-height)
+$Event-primaryInfo-fontSize: Theme-fontSize(text, large, font-size)
+$Event-primaryInfo-fontWeight: Theme-fontWeight(bold)
+$Event-primaryInfo-lineHeight: Theme-fontSize(text, large, line-height)
+$Event-secondaryInfo-fontSize: Theme-fontSize(text, base, font-size)
+$Event-secondaryInfo-fontWeight: Theme-fontWeight(regular)
+$Event-secondaryInfo-lineHeight: Theme-fontSize(text, base, line-height)
+$Event-title-fontSize: Theme-fontSize(title, medium, font-size)
+$Event-title-fontWeight: Theme-fontWeight(bold)
+$Event-title-lineHeight: Theme-fontSize(title, medium, line-height)
+$Event-spacing-base: 23px
+$Event-radius: 2px
+$Event-width: 425px
+$Event-height: 273px
 
 .Event
   background-color: $Event-color-background
+  border-radius: $Event-radius
   display: inline-block
   height: $Event-height
   padding: $Event-spacing-base
-  text-align: center
   width: $Event-width
 
 .Event-title
   color: $Event-color-title
-  text-decoration: none
+  font-size: $Event-title-fontSize
+  font-weight: $Event-title-fontWeight
+  font-weight: $Event-title-fontWeight
+
+.Event-primaryInfo
+  color: $Event-color-primaryInfo
+  font-size: $Event-primaryInfo-fontSize
+  font-weight: $Event-primaryInfo-fontWeight
+  line-height: $Event-primaryInfo-lineHeight
+
+.Event-secondaryInfo
+  color: $Event-color-secondaryInfo
+  font-size: $Event-secondaryInfo-fontSize
+  font-weight: $Event-secondaryInfo-fontWeight
+  line-height: $Event-secondaryInfo-lineHeight
+
+.Event-label
+  color: $Event-color-label
+  font-size: $Event-label-fontSize
+  font-weight: $Event-label-fontWeight
+  line-height: $Event-label-lineHeight

@@ -1,31 +1,50 @@
-$Theme-fontSize-base: 18px;
-$Theme-fontSize-large: 1.222rem;
+$Theme-fontSize-text-base: 16px;
 
 $Theme-spacing-base: 18px;
 $Theme-spacing-small: 9px;
 
+$Theme-fontWeight-bold: 700;
+$Theme-fontWeight-regular: 400;
+
 $Theme-fontSizes: (
-  base: ( font-size: $Theme-fontSize-base, line-height: 1.618 ),
-  large: ( font-size: $Theme-fontSize-large, line-height: 1.5 )
+  text: (
+    base:   (font-size: $Theme-fontSize-text-base, line-height: 1.618),
+    small:  (font-size: 0.875rem, line-height: 1.618),
+    large:  (font-size: 1.25rem, line-height: 1.618)
+  ),
+  title: (
+    small:  (font-size: 1.5rem, line-height: 1.618),
+    medium: (font-size: 1.75rem, line-height: 1.618),
+    large:  (font-size: 2.25rem, line-height: 1.618)
+  )
 );
 
-@function Theme-fontSize($size, $property: 'font-size'){
-  @return map-get(map-get($Theme-fontSizes, $size), $property);
+$Theme-weights:(
+  regular: 400,
+  bold: 700
+);
+
+@function Theme-fontSize($type, $size, $property: 'font-size'){
+  @return map-get(map-get(map-get($Theme-fontSizes, $type), $size), $property);
 }
 
-$Theme-blue: #2A99C8;
-$Theme-beige: #F1EAD9;
-$Theme-white: #FFF;
-$Theme-black: #000;
-$Theme-red: #F56B75;
-$Theme-pink: #E78A91;
-$Theme-yellow: #F6C75C;
-$Theme-darkYellow: #E4B855;
-$Theme-lightGray: #D8D1C2;
-$Theme-gray: #B4B4B4;
+@function Theme-fontWeight($name){
+  @return map-get($Theme-weights, $name);
+}
 
-$Theme-lightGreenSuccess: #E6F0C0;
+$Theme-beige: #F1EAD9;
+$Theme-black: #000;
+$Theme-blue: #2A99C8;
+$Theme-darkYellow: #E4B855;
+$Theme-gray: #B4B4B4;
+$Theme-lightGray: #D8D1C2;
+$Theme-pink: #E78A91;
+$Theme-red: #F56B75;
+$Theme-white: #FFF;
+$Theme-yellow: #F6C75C;
+
 $Theme-greenSuccess: #566612;
+$Theme-lightGreenSuccess: #E6F0C0;
 $Theme-lightRedError: #FCE3E4;
 $Theme-redDanger: #BF283A;
 $Theme-redError: #981215;
@@ -61,7 +80,7 @@ $Theme-color: (
   text: (
     error: $Theme-redError,
     event-primary-info: $Theme-red,
-    event-secundary-info: $Theme-pink,
+    event-secondary-info: $Theme-pink,
     label: $Theme-pink,
     main-info: $Theme-black,
     menu-bar: $Theme-beige,
@@ -83,6 +102,10 @@ $Theme-color: (
   box-sizing: border-box;
 }
 
+a{
+  text-decoration: none;
+}
+
 ul{
   margin: 0;
   padding: 0;
@@ -93,9 +116,8 @@ li{
 }
 
 html{
-  font-family: sans-serif;
-  font-size: Theme-fontSize(base);
+  font-family: "azo-sans-web",sans-serif;
+  font-size: $Theme-fontSize-text-base;
   height: 100%;
-  line-height: Theme-fontSize(base, line-height);
   text-rendering: optimizeLegibility;
 }

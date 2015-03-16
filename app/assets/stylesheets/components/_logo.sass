@@ -1,12 +1,11 @@
 $Logo-color: Theme-color(text, menu-bar)
-$Logo-fontSize: Theme-fontSize(large, font-size)
+$Logo-fontSize: Theme-fontSize(title, large, font-size)
+$Logo-fontWeight: Theme-fontWeight(bold)
 
 .Logo
   font-size: $Logo-fontSize
-  text-transform: uppercase
+  font-weight: $Logo-fontWeight
 
 .Logo-link
   color: $Logo-color
   text-decoration: none
-  &:hover
-    color: darken($Logo-color, 10%)
