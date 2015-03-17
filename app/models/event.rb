@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
 
   after_create :notify_users
 
-  scope :future, -> { where('start_date >= ?', Time.now) }
+  scope :future, -> { where('start_date >= ?', Time.now).order('start_date ASC') }
 
   def attending?(user_id)
     Attendee.find_by(user_id: user_id, event_id: id).nil? != false
