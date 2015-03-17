@@ -21,11 +21,16 @@ html lang="en"
           .Header-nav
             nav role="navigation"
               ul.Navbar
-                - if current_user
-                  li.Navbar-item = link_to "#{User.user_name(current_user)}", user_path(current_user), class: 'Navbar-link'
+                - if current_user.present?
+                  li.Navbar-item
+                    = link_to user_path(current_user) do
+                      img.Navbar-image src="#{current_user.image}"
+                      .Navbar-link
+                        = "#{current_user.name}"
                   li.Navbar-item = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'Navbar-link'
                 - else
                   li.Navbar-item = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: 'Navbar-link'
+                  i.fa.fa-twitter
     section.MainLayout-notification
       .Container
         - if flash[:notice].present?
