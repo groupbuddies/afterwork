@@ -1,5 +1,4 @@
-h2 Create new event
-
-= form_for @event do |f|
-  = render partial: 'fields', locals: {f: f}
-= link_to 'Back', events_path
+.FormLayout
+  = form_for @event do |f|
+    = render partial: 'fields', locals: {f: f}
+  = link_to 'Back', events_path

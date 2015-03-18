@@ -1,0 +1,16 @@
+$InputText-border: 2px
+$InputText-border-color: Theme-color(input, border)
+$InputText-fontSize: Theme-fontSize(text, base)
+$InputText-spacing-small: $Theme-spacing-small
+$InputText-height: 40px
+
+.InputText
+  border-radius: $InputText-border
+  border: $InputText-border solid $InputText-border-color
+  font-size: $InputText-fontSize
+  height: $InputText-height
+  padding: $InputText-spacing-small
+  width: 100%
+
+.InputText--small
+  width: 50%

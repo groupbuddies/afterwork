@@ -1,7 +1,28 @@
-  = f.text_field :name
-  = f.text_field :location
-  = f.datetime_select :start_date
-  = f.text_field :description
-  = f.text_field :hashtag
-  = f.text_field :interest_list, value: @event.interest_list.join(',')
-  = f.submit
+.Form
+  .Form-label
+    = f.label :name_name
+  .Form-input
+      = f.text_field :name, class: 'InputText', required: true
+  .Form-label
+    = f.label :event_hashtag
+  .Form-input
+    = f.text_field :hashtag, class: 'InputText InputText--small'
+  .Form-label
+    = f.label :event_description
+  .Form-input
+    = f.text_field :description, class: 'InputText'
+  .Form-label
+    = f.label :start_date
+  .Form-input
+    = f.datetime_select :start_date, { minute_step: 15, required: true }, { class: 'InputDropdown' }
+  .Form-label
+    = f.label :location
+  .Form-input
+    = f.text_field :location, required: true, class: 'InputText'
+  .Form-label
+    = f.label :event_interests
+  .Form-input
+    = f.text_field :interest_list, value: @event.interest_list.join(','), class: 'InputText'
+  .FormLayout-action
+    .Form-action
+    = f.submit 'save', class: 'Button'
