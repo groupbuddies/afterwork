@@ -1,0 +1,13 @@
+$TextWithIcon-spacing-left: $Theme-spacing-small
+$TextWithIcon-color-action: Theme-color(button, delete)
+
+.TextWithIcon-text
+  display: inline-block
+
+.TextWithIcon-icon
+  display: inline-block
+  padding-left: $TextWithIcon-spacing-left
+
+.TextWithIcon--delete
+  .TextWithIcon-icon
+    color: $TextWithIcon-color-action
