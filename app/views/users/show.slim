@@ -1,20 +1,39 @@
-h2 User profile
-
-img src=="#{@user.image}" alt='User profile picture'
-h3 =@user.name
-p ="Twitter: #{@user.screen_name}"
-
-b Available on
-table
-  -@user.availabilities.each do |availability|
-    tr
-      td = "#{Date::DAYNAMES[availability.week_day]}'s from #{availability.start_hours} up to #{availability.end_hours}"
-      td = link_to 'delete', user_availability_path(@user, availability), method: :delete
-
-h3 Interests
-p
-  -@user.interest_list.each do |interest|
-    = "#{interest} |"
-
-= link_to 'Edit User', edit_user_path(@user)
-= link_to 'Add availability', new_user_availability_path(@user)
+.BodyLayout
+  .BodyLayout-header
+    .Heading.Heading--large = "@#{@user.screen_name}"
+  .BodyLayout-content
+    .Grid.Grid--twoColumns
+      .Grid-item
+        .UserInfo
+          .Heading.Heading--small
+            | Availability
+          .Separator
+          .UserInfo-items
+            ul.List
+              -@user.availabilities.each do |availability|
+                li.List-item
+                  .TextWithIcon.TextWithIcon--delete
+                    .TextWithIcon-text
+                      = "#{Date::DAYNAMES[availability.week_day]}'s from #{availability.start_hours} up to #{availability.end_hours}"
+                    = link_to user_availability_path(@user, availability), method: :delete, class: 'TextWithIcon-icon' do
+                      span.fa.fa-close
+          .Separator
+          .UserInfo-action
+            = link_to 'add availability', new_user_availability_path(@user), class: 'Button'
+      .Grid-item
+        .UserInfo
+          .Heading.Heading--small
+            | Interests
+          .Separator
+          .UserInfo-items
+            ul.List
+              -@user.interest_list.each do |interest|
+                li.List-item
+                  .TextWithIcon.TextWithIcon--delete
+                    .TextWithIcon-text
+                      = "#{interest}"
+                    = link_to '#', method: :delete, class: 'TextWithIcon-icon' do
+                      span.fa.fa-close
+          .Separator
+          .UserInfo-action
+            = link_to 'add interest', '#', class: 'Button'

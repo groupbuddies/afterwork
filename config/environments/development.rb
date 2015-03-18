@@ -44,4 +44,7 @@ Rails.application.configure do
 
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  #This option tells slim to remove the white spaces between tags. Better for reduce design issues.
+  Slim::Engine.options[:pretty] = false
 end

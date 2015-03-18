@@ -1,14 +1,14 @@
+$Navbar-color-separator: Theme-color(line, separator-menu-bar-content)
 $Navbar-color-text: Theme-color(text, menu-bar)
+$Navbar-fontSize-nav: Theme-fontSize(text, base, font-size)
 $Navbar-spacing-base: $Theme-spacing-base
-$Navbar-fontSize-nav: Theme-fontSize(text, large, font-size)
-$Navbar-separator-color: Theme-color(line, separator-menu-bar-content)
 
 .Navbar
   font-size: $Navbar-fontSize-nav
   vertical-align: middle
 
 .Navbar-item
-  border-left: 1px solid $Navbar-separator-color
+  border-left: 1px solid $Navbar-color-separator
   display: inline-block
   list-style: none
   padding: 0 $Navbar-spacing-base
@@ -16,6 +16,7 @@ $Navbar-separator-color: Theme-color(line, separator-menu-bar-content)
 .Navbar-link
   color: $Navbar-color-text
   display: inline-block
+  padding-left: $Navbar-spacing-base / 2
   text-decoration: none
 
 .Navbar-image

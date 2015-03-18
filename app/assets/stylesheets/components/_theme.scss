@@ -1,21 +1,20 @@
-$Theme-fontSize-text-base: 16px;
+$Theme-fontSize-text-base: 18px;
 
 $Theme-spacing-base: 20px;
-$Theme-spacing-small: 9px;
+$Theme-spacing-small: 10px;
 
 $Theme-fontWeight-bold: 700;
 $Theme-fontWeight-regular: 400;
 
 $Theme-fontSizes: (
   text: (
-    base:   (font-size: $Theme-fontSize-text-base, line-height: 1.618),
-    small:  (font-size: 0.875rem, line-height: 1.618),
-    large:  (font-size: 1.25rem, line-height: 1.618)
+    base:   (font-size: $Theme-fontSize-text-base, line-height: 1.333),
+    small:  (font-size: 0.875rem, line-height: 1.111),
   ),
   title: (
-    small:  (font-size: 1.5rem, line-height: 1.618),
-    medium: (font-size: 1.75rem, line-height: 1.618),
-    large:  (font-size: 2.25rem, line-height: 1.618)
+    small:  (font-size: 1.222rem, line-height: 1.556),
+    medium: (font-size: 1.444rem, line-height: 1.778),
+    large:  (font-size: 1.667rem, line-height: 2)
   )
 );
 
@@ -122,8 +121,13 @@ html{
   text-rendering: optimizeLegibility;
 }
 
+
 select {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+}
+
+body{
+  margin: 0;
 }

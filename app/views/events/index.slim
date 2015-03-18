@@ -1,6 +1,6 @@
 -@events_per_month.each do |month|
+  =Date::MONTHNAMES[month[0]]
   ul.Grid
-    .Event-month = Date::MONTHNAMES[month[0]]
     -month[1].each do |event|
       li.Grid-item
         .Event
