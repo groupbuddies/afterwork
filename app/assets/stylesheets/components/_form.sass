@@ -1,41 +1,19 @@
-$Form-border-input: Theme-color(input, border)
 $Form-color-filled: Theme-color(input, filled)
-$Form-color-input-filled: Theme-color(input, filled)
-$Form-color-input-placeholder: Theme-color(input, placeholder)
 $Form-color-label: Theme-color(text, label)
-$Form-fontSize-input: Theme-fontSize(text, base, font-size)
-$Form-height: 40px
 $Form-input-border: 2px
-$Form-input-width-hashtag: 212px
 $Form-spacing-base: $Theme-spacing-base
 $Form-spacing-small: $Theme-spacing-small
-$Form-spacing-tiny: $Theme-spacing-small / 2
 $Form-width: 425px
 
 .Form
-  margin: 0 auto
+  display: inline-block
+  text-align: left
   width: $Form-width
 
 .Form-label
   color: $Form-color-label
-  display: block
-  padding: $Form-spacing-base 0 $Form-spacing-tiny 0
+  padding-top: $Form-spacing-small
 
 .Form-input
-  border-radius: $Form-input-border
-  border: 2px solid $Form-border-input
-  font-color: $Form-color-filled
-  font-size: $Form-fontSize-input
-  height: $Form-height
-  padding: $Form-spacing-small
-  width: 100%
-
-.Form-dropdown
-  border: $Form-input-border solid $Form-border-input
-
-.Form--hashtag
-  width: $Form-input-width-hashtag
-
-.Form-action
-  padding-top: 2 * $Form-spacing-base
-  text-align: right
+  color: $Form-color-filled
+  padding-top: $Form-spacing-small
