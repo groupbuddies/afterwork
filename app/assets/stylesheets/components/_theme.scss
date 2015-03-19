@@ -130,3 +130,11 @@ select {
 body{
   margin: 0;
 }
+
+input, textarea, keygen, select, button{
+  font-size: $Theme-fontSize-text-base;
+}
+
+input[type=submit]{
+  border: none;
+}

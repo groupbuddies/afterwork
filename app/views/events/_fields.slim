@@ -23,6 +23,3 @@
     = f.label :event_interests
   .Form-input
     = f.text_field :interest_list, value: @event.interest_list.join(','), class: 'InputText'
-  .FormLayout-action
-    .Form-action
-    = f.submit 'save', class: 'Button'

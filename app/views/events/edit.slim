@@ -1,3 +1,5 @@
 .FormLayout
   = form_for @event do |f|
     = render partial: 'fields', locals: {f: f}
+    .FormLayout-action
+      = f.submit 'save', class: 'Button'
