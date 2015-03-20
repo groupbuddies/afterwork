@@ -1,39 +1,36 @@
 .BodyLayout
   .BodyLayout-header
-    .Heading.Heading--large = "@#{@user.screen_name}"
+    .BodyLayout-headerItemCenter
+      .Heading.Heading--large = "@#{@user.screen_name}"
   .BodyLayout-content
     .Grid.Grid--twoColumns
       .Grid-item
-        .UserInfo
-          .Heading.Heading--small
-            | Availability
-          .Separator
-          .UserInfo-items
-            ul.List
-              -@user.availabilities.each do |availability|
-                li.List-item
-                  .TextWithIcon.TextWithIcon--delete
-                    .TextWithIcon-text
-                      = "#{Date::DAYNAMES[availability.week_day]}'s from #{availability.start_hours} up to #{availability.end_hours}"
-                    = link_to user_availability_path(@user, availability), method: :delete, class: 'TextWithIcon-icon' do
-                      span.fa.fa-close
-          .Separator
-          .UserInfo-action
-            = link_to 'add availability', new_user_availability_path(@user), class: 'Button'
+        .Heading.Heading--small
+          | Availability
+        .Separator
+        .ContentLayout
+          ul.List
+            -@user.availabilities.each do |availability|
+              li.List-item
+                .TextWithIcon.TextWithIcon--delete
+                  .TextWithIcon-text
+                    = "#{Date::DAYNAMES[availability.week_day]}'s from #{availability.start_hours} up to #{availability.end_hours}"
+                  = link_to user_availability_path(@user, availability), method: :delete, class: 'TextWithIcon-icon' do
+                    span.fa.fa-close
+          .ContentLayout-action
+            = link_to 'add availability', new_user_availability_path(@user), class: 'Button Button--super'
       .Grid-item
-        .UserInfo
-          .Heading.Heading--small
-            | Interests
-          .Separator
-          .UserInfo-items
-            ul.List
-              -@user.interest_list.each do |interest|
-                li.List-item
-                  .TextWithIcon.TextWithIcon--delete
-                    .TextWithIcon-text
-                      = "#{interest}"
-                    = link_to '#', method: :delete, class: 'TextWithIcon-icon' do
-                      span.fa.fa-close
-          .Separator
-          .UserInfo-action
-            = link_to 'add interest', '#', class: 'Button'
+        .Heading.Heading--small
+          | Interests
+        .Separator
+        .ContentLayout
+          ul.List
+            -@user.interest_list.each do |interest|
+              li.List-item
+                .TextWithIcon.TextWithIcon--delete
+                  .TextWithIcon-text
+                    = "#{interest}"
+                  = link_to '#', method: :delete, class: 'TextWithIcon-icon' do
+                    span.fa.fa-close
+          .ContentLayout-action
+            = link_to 'add interest', '#', class: 'Button Button--super'

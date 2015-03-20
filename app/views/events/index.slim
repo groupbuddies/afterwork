@@ -1,16 +1,23 @@
--@events_per_month.each do |month|
-  =Date::MONTHNAMES[month[0]]
-  ul.Grid
-    -month[1].each do |event|
-      li.Grid-item
-        .Event
-          = link_to event_path(event.id) do
-            .Event-title = event.name
-            .Event-label = event.hashtag
-            .Event-primaryInfo = "On #{Date::DAYNAMES[event.start_date.wday]} #{event.starting_date}"
-            .Event-secondaryInfo = event.location
-            .Event-primaryInfo About
-            .Event-primaryInfo = event.attendees.size
-.Body-action
-  -if current_user.present?
-    = link_to 'New Event', new_event_path, class: 'Button'
+.BodyLayout
+  .BodyLayout-header
+    .BodyLayout-headerItemLeft
+      -if current_user.present?
+        = link_to 'New Event', new_event_path, class: 'Button Button--awesome'
+    .BodyLayout-headerItemCenter
+      Heading.Heading--large Events
+  -@events_per_month.each do |month|
+    .BodyLayout-content
+      Heading.Heading--small
+        =Date::MONTHNAMES[month[0]]
+      .Separator
+      ul.Grid
+        -month[1].each do |event|
+          li.Grid-item
+            .Event
+              = link_to event_path(event.id) do
+                .Event-title = event.name
+                .Event-label = event.hashtag
+                .Event-primaryInfo = "On #{Date::DAYNAMES[event.start_date.wday]} #{event.starting_date}"
+                .Event-secondaryInfo = event.location
+                .Event-primaryInfo About
+                .Event-primaryInfo = event.attendees.size

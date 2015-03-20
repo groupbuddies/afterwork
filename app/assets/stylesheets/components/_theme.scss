@@ -3,9 +3,6 @@ $Theme-fontSize-text-base: 18px;
 $Theme-spacing-base: 20px;
 $Theme-spacing-small: 10px;
 
-$Theme-fontWeight-bold: 700;
-$Theme-fontWeight-regular: 400;
-
 $Theme-fontSizes: (
   text: (
     base:   (font-size: $Theme-fontSize-text-base, line-height: 1.333),
@@ -18,14 +15,14 @@ $Theme-fontSizes: (
   )
 );
 
+@function Theme-fontSize($type, $size, $property: 'font-size'){
+  @return map-get(map-get(map-get($Theme-fontSizes, $type), $size), $property);
+}
+
 $Theme-weights:(
   regular: 400,
   bold: 700
 );
-
-@function Theme-fontSize($type, $size, $property: 'font-size'){
-  @return map-get(map-get(map-get($Theme-fontSizes, $type), $size), $property);
-}
 
 @function Theme-fontWeight($name){
   @return map-get($Theme-weights, $name);

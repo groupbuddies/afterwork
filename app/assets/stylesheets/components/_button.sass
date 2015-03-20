@@ -1,4 +1,6 @@
-$Button-color-background: Theme-color(button, primary)
+$Button-color-background-super: Theme-color(button, primary)
+$Button-color-background-awesome: Theme-color(button, create)
+$Button-color-background-best: Theme-color(button, secondary)
 $Button-color-text: Theme-color(button, text)
 $Button-fontSize: Theme-fontSize(text, base)
 $Button-fontWeight: Theme-fontWeight(regular)
@@ -7,7 +9,7 @@ $Button-spacing: $Theme-spacing-base
 $Button-width: 200px
 
 .Button
-  background-color: $Button-color-background
+  background-color: $Button-color-background-super
   border-radius: 2px
   color: $Button-color-text
   display: inline-block
@@ -19,4 +21,14 @@ $Button-width: 200px
   text-transform: uppercase
   width: $Button-width
   &:hover
-    background-color: darken($Button-color-background, 10%)
+    background-color: darken($Button-color-background-super, 10%)
+
+.Button.Button--awesome
+  background-color: $Button-color-background-awesome
+  &:hover
+    background-color: darken($Button-color-background-awesome, 10%)
+
+.Button.Button--best
+  background-color: $Button-color-background-best
+  &:hover
+    background-color: darken($Button-color-background-best, 10%)

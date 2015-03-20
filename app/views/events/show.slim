@@ -1,24 +1,56 @@
-h2 = @event.name
-p Starts #{@event.starting_date}
-h3 In #{@event.location} | #{@event.hashtag} 
-b Description
-p #{@event.description}
-h3 Interests
-p
-  -@event.interest_list.each do |interest|
-    ="#{interest} |"
+.BodyLayout
+  .BodyLayout-header
+    .BodyLayout-headerItemCenter
+      .Heading.Heading--large = @event.name
+  .BodyLayout-content
+    .Grid.Grid--threeColumns
+      .Grid-item
+        .Separator
+        .ContentLayout
+          .ContentLayout-label
+            .Label Hashtag
+          .ContentLayout-text
+            = @event.hashtag
+          .ContentLayout-label
+            .Label Description
+          .ContentLayout-text
+            = @event.description
+      .Grid-item
+        .Separator
+        .ContentLayout
+          .ContentLayout-label
+            .Label Start time
+          .ContentLayout-text
+            = @event.start_date
+          .ContentLayout-label
+            .Label Date
+          .ContentLayout-text
+            = @event.start_date
+          .ContentLayout-label
+            .Label Location
+          .ContentLayout-text
+            = @event.location
+      .Grid-item
+        .Separator
+        .ContentLayout
+          .ContentLayout-label
+            .Label Interests
+          .ContentLayout-text
+            -@event.interest_list.each do |interest|
+              = "#{interest}"
+          .ContentLayout-label
+            .Label Attending
+          .ContentLayout-text
+            = "#{@event.attendees.size}"
+  .BodyLayout-headerItemCenter
+    -if current_user.present?
+      - if @event.attending?(current_user.id)
+        = link_to 'Attend', attend_event_path(@event), method: :post, class: 'Button Button--super'
+      - else
+        = link_to 'Cancel', cancel_attend_event_path(@event), method: :delete, class: 'Button Button--super'
+    -else
+      = link_to 'Sign in with your twitter account', user_omniauth_authorize_path(:twitter)
 
-p.fa.fa-3x.fa-user = "#{@event.attendees.size}"
--if current_user.nil?
-  p Wanna attend to this event?
-  = link_to 'Sign in with your twitter account', user_omniauth_authorize_path(:twitter)
-
--else
-  - if @event.attending?(current_user.id)
-    = link_to 'Attend', attend_event_path(@event), method: :post
-  - else
-    = link_to 'Cancel', cancel_attend_event_path(@event), method: :delete
-  - if @event.owner == current_user.id
-    = link_to 'Edit Event', edit_event_path(@event)
-    = link_to 'Delete Event', event_path(@event), method: :delete
-
+    - if can? :manage, @event
+      = link_to 'Edit Event', edit_event_path(@event), class: 'Button'
+      = link_to 'Delete Event', event_path(@event), method: :delete, class: 'Button'

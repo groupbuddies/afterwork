@@ -1,25 +1,25 @@
-.Form
-  .Form-label
-    = f.label :name_name
-  .Form-input
+.ContentLayout
+  .ContentLayout-label
+    = f.label :event_name, class: 'Label'
+  .ContentLayout-text
       = f.text_field :name, class: 'InputText', required: true
-  .Form-label
-    = f.label :event_hashtag
-  .Form-input
+  .ContentLayout-label
+    = f.label :event_hashtag, class: 'Label'
+  .ContentLayout-text
     = f.text_field :hashtag, class: 'InputText InputText--small'
-  .Form-label
-    = f.label :event_description
-  .Form-input
+  .ContentLayout-label
+    = f.label :event_description, class: 'Label'
+  .ContentLayout-text
     = f.text_field :description, class: 'InputText'
-  .Form-label
-    = f.label :start_date
-  .Form-input
+  .ContentLayout-label
+    = f.label :start_date, class: 'Label'
+  .ContentLayout-text
     = f.datetime_select :start_date, { minute_step: 15, required: true }, { class: 'InputDropdown' }
-  .Form-label
-    = f.label :location
-  .Form-input
+  .ContentLayout-label
+    = f.label :location, class: 'Label'
+  .ContentLayout-text
     = f.text_field :location, required: true, class: 'InputText'
-  .Form-label
-    = f.label :event_interests
-  .Form-input
+  .ContentLayout-label
+    = f.label :event_interests, class: 'Label'
+  .ContentLayout-text
     = f.text_field :interest_list, value: @event.interest_list.join(','), class: 'InputText'

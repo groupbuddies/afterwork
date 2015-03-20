@@ -1,5 +1,10 @@
-.FormLayout
-  = form_for @event do |f|
-    = render partial: 'fields', locals: {f: f}
-    .FormLayout-action
-      = f.submit 'save', class: 'Button'
+.BodyLayout
+  .BodyLayout-header
+    .BodyLayout-headerItemCenter
+      .Heading.Heading--large Creating Event
+  .BodyLayout-content
+    .ContentLayout.ContentLayout--form
+      = form_for @event do |f|
+        = render partial: 'fields', locals: {f: f}
+        .ContentLayout-action
+          = f.submit 'save', class: 'Button'

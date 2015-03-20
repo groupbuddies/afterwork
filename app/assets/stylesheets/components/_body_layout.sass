@@ -1,7 +1,31 @@
-$BodyLayout-spacing-title: 4 * $Theme-spacing-base
+$BodyLayout-spacing-large: 4 * $Theme-spacing-base
+$BodyLayout-spacing: 2 * $Theme-spacing-base
+
+.BodyLayout
+  display: inline-block
+  padding-bottom: $BodyLayout-spacing
+  padding-top: $BodyLayout-spacing
+  width: 100%
 
 .BodyLayout-header
-  margin: $BodyLayout-spacing-title 0
-  text-align: center
+  margin-bottom: $BodyLayout-spacing-large
+  position: relative
 
-.BodyLayout-content
+.BodyLayout-headerItemCenter
+  display: inline-block
+  text-align: center
+  width: 100%
+
+.BodyLayout-headerItemLeft
+  left: 0
+  position: absolute
+  top: 0
+
+.BodyLayout-headerItemRight
+  position: absolute
+  right: 0
+  top: 0
+
+.BodyLayout-content + .BodyLayout-content
+  margin-top: $BodyLayout-spacing-large
+
