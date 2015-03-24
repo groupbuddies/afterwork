@@ -11,6 +11,26 @@ module API
       render json: Event.find(params[:id])
     end
 
+    def attend
+      @event = Event.find(params[:id])
+
+      if Attendee.attending?(current_user.id, @event.id)
+        Attendee.create(user_id: current_user.id, event_id: @event.id)
+      end
+
+      render json: { user: current_user.name, event: @event.name, message: 'Attenging'}
+    end
+
+    def cancel_attend
+      @event = Event.find(params[:id])
+
+      unless Attendee.attending?(current_user.id, @event.id)
+        Attendee.find_by(user_id: current_user.id, event_id: @event.id).delete
+      end
+
+      render json: { user: current_user.name, event: @event.name, message: 'Attending canceled' }
+    end
+
     private
 
     def event_params

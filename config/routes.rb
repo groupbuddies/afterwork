@@ -18,8 +18,12 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :events, only: [:index, :show]
     get '/me', to: 'users#me'
+    resources :events, only: [:index, :show] do
+      member do
+        post :attend
+        delete :cancel_attend
+      end
+    end
   end
-
 end

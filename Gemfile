@@ -2,9 +2,11 @@ source 'https://rubygems.org'
 
 ruby '2.1.5'
 
+gem 'active_model_serializers'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'bootstrap-sass', '~> 3.3.3'
 gem 'bourbon'
+gem 'bower'
 gem 'cancancan', '~>1.10'
 gem 'coffee-rails'
 gem 'devise'
@@ -29,7 +31,6 @@ gem 'title'
 gem 'twitter'
 gem 'uglifier'
 gem 'whenever', :require => false
-gem 'bower'
 
 group :development do
   gem 'better_errors'
