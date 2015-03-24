@@ -1,0 +1,7 @@
+head
+  javascript:
+    function send() {
+      window.opener.postMessage("#{@user['authentication_token']}", "*");
+      window.close();
+    }
+body(onLoad="send()")

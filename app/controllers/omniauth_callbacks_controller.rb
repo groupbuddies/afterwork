@@ -4,7 +4,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     @user = User.from_omniauth(request.env['omniauth.auth'])
 
-    sign_in_or_create_user
+    if request.env['omniauth.params']['type'].eql?("web")
+      sign_in_or_create_user
+    else
+      render 'token_post_message', layout: false
+    end
   end
 
   private

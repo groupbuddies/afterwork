@@ -29,7 +29,7 @@ html lang="en"
                         = "#{current_user.name}"
                   li.Navbar-item = link_to "Sign out", destroy_user_session_path, method: :delete, class: 'Navbar-link'
                 - else
-                  li.Navbar-item = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: 'Navbar-link'
+                  li.Navbar-item = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter, type: 'web'), class: 'Navbar-link'
                   i.fa.fa-twitter
     section.MainLayout-notification
       .Container
