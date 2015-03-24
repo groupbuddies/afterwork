@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :attendees
+  namespace :api do
+    resources :events, only: [:index, :show]
+  end
 
 end

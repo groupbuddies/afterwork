@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :availabilities
 
+  before_save :ensure_authentication_token
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       config_attributes(user, auth)
@@ -42,5 +44,18 @@ class User < ActiveRecord::Base
     user.password = Devise.friendly_token[0, 20]
     user.image = auth.info.image
     user.screen_name = auth.info.nickname
+  end
+
+  def ensure_authentication_token
+    return unless authentication_token.blank?
+
+    self.authentication_token = generate_authentication_token
+  end
+
+  def generate_authentication_token
+    loop do
+      token = SecureRandom.urlsafe_base64(nil, false)
+      break token unless User.where(authentication_token: token).first
+    end
   end
 end
