@@ -2,6 +2,11 @@ class EventsController < ApplicationController
   authorize_resource
   def index
     @events_per_month = Event.future.group_by { |event| event.start_date.month }
+
+    respond_to do |format|
+      format.html
+      format.json { render json: Event.future }
+    end
   end
 
   def show
