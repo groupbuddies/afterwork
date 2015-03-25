@@ -13,6 +13,7 @@ module API
 
     def attend
       @event = Event.find(params[:id])
+      authorize! :create, Attendee
 
       if Attendee.attending?(current_user.id, @event.id)
         Attendee.create(user_id: current_user.id, event_id: @event.id)
@@ -23,6 +24,7 @@ module API
 
     def cancel_attend
       @event = Event.find(params[:id])
+      authorize! :create, Attendee
 
       unless Attendee.attending?(current_user.id, @event.id)
         Attendee.find_by(user_id: current_user.id, event_id: @event.id).delete
