@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :events, only: [:index, :show]
+    get '/me', to: 'users#me'
   end
 
 end

@@ -1,6 +1,7 @@
 module API
-  class EventsController < ApplicationController
-    authorize_resource
+  class EventsController < API::ApplicationController
+    skip_before_action :authenticate, only: [:index, :show]
+    skip_authorization_check :only => [:index, :show]
 
     def index
       render json: Event.all
