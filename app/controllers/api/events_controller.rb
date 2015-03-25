@@ -18,7 +18,7 @@ module API
         Attendee.create(user_id: current_user.id, event_id: @event.id)
       end
 
-      render json: { user: current_user.name, event: @event.name, message: 'Attenging'}
+      render json: @event
     end
 
     def cancel_attend
@@ -28,7 +28,7 @@ module API
         Attendee.find_by(user_id: current_user.id, event_id: @event.id).delete
       end
 
-      render json: { user: current_user.name, event: @event.name, message: 'Attending canceled' }
+      render json: @event
     end
 
     private
