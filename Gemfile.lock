@@ -150,7 +150,7 @@ GEM
     hashie (3.4.0)
     hike (1.2.3)
     hitimes (1.2.2)
-    http (0.7.2)
+    http (0.7.3)
       http-form_data (~> 1.0.0)
       http_parser.rb (~> 0.6.0)
     http-form_data (1.0.0)
