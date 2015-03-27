@@ -1,7 +1,9 @@
 head
   javascript:
     function send() {
-      window.opener.postMessage("#{@user['authentication_token']}", "*");
+      window.localStorage.setItem("accessToken", "#{@user['authentication_token']}");
+      if (window.opener)
+        window.opener.postMessage("#{@user['authentication_token']}", "*");
       window.close();
     }
 body(onLoad="send()")
